@@ -12,7 +12,7 @@ void	ft_swap_a(t_stack **a)
 	first->next_value = second->next_value;
 	second->next_value = first;
 	*a = second;
-	write(1, "sa", 2);
+	write(1, "sa\n", 3);
 }
 
 void	ft_swap_b(t_stack **b)
@@ -27,36 +27,70 @@ void	ft_swap_b(t_stack **b)
 	first->next_value = second->next_value;
 	second->next_value = first;
 	*b = second;
-	write(1, "sb", 2);
+	write(1, "sb\n", 3);
 }
 
 void	ft_swap_a_b(t_stack **a, t_stack **b)
 {
-	ft_swap_a(a);
-	ft_swap_b(b);
-	write(1, "ss", 2);
+	t_stack	*firsta;
+	t_stack	*seconda;
+	t_stack	*firstb;
+	t_stack	*secondb;
+
+	if (!*a || !(*a)->value)
+		return ;
+	firsta = *a;
+	seconda = (*a)->next_value;
+	firsta->next_value = seconda->next_value;
+	seconda->next_value = firsta;
+	*a = seconda;
+	if (!*b || !(*b)->value)
+		return ;
+	firstb = *b;
+	secondb = (*b)->next_value;
+	firstb->next_value = secondb->next_value;
+	secondb->next_value = firstb;
+	*b = secondb;
+	write(1, "ss\n", 3);
 }
 
 int	main(void)
 {
 	t_stack *a = ft_new_stack(42);
 	t_stack *b = ft_new_stack(55);
-	t_stack *temp;
-	ft_stackadd_back(&a, b);
-
-	temp = a;
-	while (temp)
+	t_stack *temp1;
+	t_stack *temp2;
+	a->next_value = ft_new_stack(43);
+	b->next_value = ft_new_stack(56);
+	temp1 = a;
+	while (temp1)
 	{
-		printf("%d\n", temp->value);
-		temp = temp->next_value;
+		printf("%d\n", temp1->value);
+		temp1 = temp1->next_value;
 	}
 	printf("---------------\n");
-	ft_swap_a(&a);
-	temp = a;
-	while (temp)
+
+	temp2 = b;
+	while (temp2)
 	{
-		printf("%d\n", temp->value);
-		temp = temp->next_value;
+		printf("%d\n", temp2->value);
+		temp2 = temp2->next_value;
+	}
+	printf("----------------\n");
+	ft_swap_a_b(&a, &b);
+	temp1 = a;
+	while (temp1)
+	{
+		printf("%d\n", temp1->value);
+		temp1 = temp1->next_value;
+	}
+	printf("---------------\n");
+
+	temp2 = b;
+	while (temp2)
+	{
+		printf("%d\n", temp2->value);
+		temp2 = temp2->next_value;
 	}
 	free(a);
 	free(b);
