@@ -29,12 +29,10 @@ static int	ft_word_counter(char const *s, char c)
 char	**ft_separator(int argc, char *argv[])
 {
 	int		i;
-	int		l;
 	char	**split;
 	int		j;
 
 	i = 1;
-	l = 0;
 	j = 0;
 	while (i < argc)
 	{
@@ -48,33 +46,31 @@ char	**ft_separator(int argc, char *argv[])
 void	ft_reader(int argc, char *argv[])
 {
 	int		i;
-	int		l;
 	char	**split;
 	int		j;
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
 
+	split = NULL;
 	i = 1;
-	l = 0;
 	while (i < argc)
 	{
 		split = ft_split(argv[i], ' ');
 		j = 0;
 		while (split[j])
 		{
-			if(a == NULL)
+			if (a == NULL)
 			{
 				a = ft_lstnew(ft_atoi(split[j]));
 			}
 			else
 			{
-				ft_lstadd_back(a,ft_atoi(split[j]));
+				ft_lstadd_back(a, ft_atoi(split[j]));
 			}
 			j++;
 		}
-		while(a)
+		while (a)
 		{
-			printf("%d",a->value);
+			printf("%d", a->value);
 			a = a->next_value;
 		}
 		while (split[j])

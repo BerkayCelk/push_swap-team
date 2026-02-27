@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:20:43 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/02/26 21:26:18 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/02/27 23:39:32 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,10 @@ t_stack	*ft_new_stack(int new_value);
 void	ft_stackadd_front(t_stack **stack, t_stack *new);
 t_stack	*ft_stacklast(t_stack *stack);
 void	ft_stackadd_back(t_stack **stack, t_stack *new);
+int ft_stack_size(t_stack **stack);
+void	ft_swap_a(t_stack **a);
+void	ft_swap_b(t_stack **b);
+void	ft_swap_a_b(t_stack **a, t_stack **b);
+void	ft_push_a(t_stack **a, t_stack **b);
+void	ft_push_b(t_stack **a, t_stack **b);
+void	ft_rotate_a(t_stack **a);

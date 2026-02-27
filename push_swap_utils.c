@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:20:15 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/02/26 20:55:54 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/02/27 23:36:55 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,16 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	new->prev_value = temp;
 }
 
-/* int	main(void)
+int ft_stack_size(t_stack **stack)
 {
-	int x = 32;
-	t_stack *a = NULL;
-	t_stack *b;
-	while (0 < x--)
-	{
-		b = ft_new_stack(x);
-		ft_stackadd_back(&a, b);
-	}
-	t_stack *temp = a;
-	while (temp)
-	{
-		printf("%d\n", (temp->value));
-		temp = temp->next_value;
-	}
-} */
+    int i = 0;
+    t_stack *temp = *stack;
+    while(temp)
+    {
+        i++;
+        temp = temp->next_value;
+    }
+    return(i);
+}
+
+//norm bound there is 5 function above.
