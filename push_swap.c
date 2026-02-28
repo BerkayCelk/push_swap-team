@@ -1,5 +1,20 @@
 #include "push_swap.h"
 
+static void	ft_free(char **doublearray)
+{
+	size_t	i;
+
+	i = 0;
+	while (doublearray[i] != NULL)
+		i++;
+	while (i > 0)
+	{
+		i--;
+		free(doublearray[i]);
+	}
+	free(doublearray);
+}
+
 static int	ft_word_counter(char const *s, char c)
 {
 	size_t	i;
@@ -43,13 +58,14 @@ char	**ft_separator(int argc, char *argv[])
 	return (split);
 }
 
-void	ft_reader(int argc, char *argv[])
+t_stack	*ft_reader(int argc, char *argv[])
 {
 	int		i;
 	char	**split;
 	int		j;
 	t_stack	*a;
 
+	a = NULL;
 	split = NULL;
 	i = 1;
 	while (i < argc)
@@ -59,35 +75,27 @@ void	ft_reader(int argc, char *argv[])
 		while (split[j])
 		{
 			if (a == NULL)
-			{
-				a = ft_lstnew(ft_atoi(split[j]));
-			}
+				a = ft_new_stack(ft_atoi(split[j]));
 			else
-			{
-				ft_lstadd_back(a, ft_atoi(split[j]));
-			}
+				ft_stackadd_back(&a, ft_new_stack(ft_atoi(split[j])));
 			j++;
 		}
-		while (a)
-		{
-			printf("%d", a->value);
-			a = a->next_value;
-		}
-		while (split[j])
-		{
-			free(split[j]);
-			j++;
-		}
-		free(split);
+		j = 0;
+		ft_free(split);
 		i++;
 	}
+	return(a);
 }
 
 int	main(int argc, char *argv[])
 {
 	int		i;
 	char	**split;
+	t_stack *temp;
+	t_stack *temp1;
+	t_stack *free1;
 
-	ft_reader(argc, argv);
-	//system("Leaks a.out");
+	temp = ft_reader(argc, argv);
+
+	system("Leaks a.out");
 }
