@@ -41,7 +41,7 @@ static int	ft_word_counter(char const *s, char c)
 	return (l);
 }
 
-char	**ft_separator(int argc, char *argv[])
+static char	**ft_separator(int argc, char *argv[])
 {
 	int		i;
 	char	**split;
@@ -58,15 +58,11 @@ char	**ft_separator(int argc, char *argv[])
 	return (split);
 }
 
-t_stack	*ft_reader(int argc, char *argv[])
+t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 {
-	int		i;
-	char	**split;
-	int		j;
-	t_stack	*a;
+	int	i;
+	int	j;
 
-	a = NULL;
-	split = NULL;
 	i = 1;
 	while (i < argc)
 	{
@@ -84,18 +80,37 @@ t_stack	*ft_reader(int argc, char *argv[])
 		ft_free(split);
 		i++;
 	}
-	return(a);
+	return (a);
 }
+
+t_stack	*ft_reader(int argc, char *argv[],int start)
+{
+	int		i;
+	char	**split;
+	int		j;
+	t_stack	*a;
+
+	a = NULL;
+	split = NULL;
+	i = start;
+	
+	return (ft_stack_creator(a, argv, argc, split));
+}
+
 
 int	main(int argc, char *argv[])
 {
 	int		i;
 	char	**split;
-	t_stack *temp;
-	t_stack *temp1;
-	t_stack *free1;
+	t_stack	*temp;
+	t_stack	*temp1;
+	t_stack	*free1;
 
 	temp = ft_reader(argc, argv);
-
-	system("Leaks a.out");
+	while (temp)
+	{
+		printf("%d\n", temp->value);
+		temp = temp->next_value;
+	}
+	//system("Leaks a.out");
 }
