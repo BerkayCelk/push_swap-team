@@ -83,7 +83,7 @@ t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 	return (a);
 }
 
-t_stack	*ft_reader(int argc, char *argv[],int start)
+t_stack	*ft_reader(int argc, char *argv[])
 {
 	int		i;
 	char	**split;
@@ -92,11 +92,8 @@ t_stack	*ft_reader(int argc, char *argv[],int start)
 
 	a = NULL;
 	split = NULL;
-	i = start;
-	
 	return (ft_stack_creator(a, argv, argc, split));
 }
-
 
 int	main(int argc, char *argv[])
 {
@@ -105,6 +102,7 @@ int	main(int argc, char *argv[])
 	t_stack	*temp;
 	t_stack	*temp1;
 	t_stack	*free1;
+
 
 	temp = ft_reader(argc, argv);
 	while (temp)
