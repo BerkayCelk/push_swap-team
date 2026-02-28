@@ -6,7 +6,7 @@
 #    By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/24 13:43:52 by ttezcan           #+#    #+#              #
-#    Updated: 2026/02/27 23:33:12 by ttezcan          ###   ########.fr        #
+#    Updated: 2026/02/28 10:22:05 by ttezcan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Wunused
 
-SRCS = push_swap_push.c push_swap_rotate.c push_swap_swap.c push_swap_utils.c 
+SRCS = push_swap_push.c push_swap_reverse_rotate.c push_swap_rotate.c push_swap_swap.c push_swap_utils.c 
 
 OBJS = $(SRCS:.c=.o)
 

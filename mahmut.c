@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   mahmut.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 23:38:16 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/02/27 23:39:42 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/02/28 10:47:40 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main()
+int	main(void)
 {
-    t_stack	*a;
-	t_stack	*b;
-	t_stack	*temp1;
-	t_stack	*temp2;
+	t_stack *a;
+	t_stack *b;
+	t_stack *temp1;
+	t_stack *temp2;
 
 	a = ft_new_stack(42);
 	b = ft_new_stack(55);
-	a->next_value = ft_new_stack(43);
-	b->next_value = ft_new_stack(56);
-	a->next_value->next_value = ft_new_stack(44);
-	b->next_value->next_value = ft_new_stack(57);
-	temp1 = a;
-    ft_rotate_a(&a);
+	ft_stackadd_back(&a,ft_new_stack(43));
+	ft_stackadd_back(&a,ft_new_stack(44));
+	ft_stackadd_back(&b,ft_new_stack(56));
+	ft_stackadd_back(&b,ft_new_stack(57));
+	ft_reverse_rotate_a(&a);
+	ft_reverse_rotate_b(&b);
+	ft_reverse_rotate_a_b(&a,&b);
 	temp1 = a;
 	while (temp1)
 	{
