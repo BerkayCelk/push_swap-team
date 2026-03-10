@@ -6,25 +6,29 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 23:35:50 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/02/27 23:38:07 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/02 17:44:13 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	t_stack	*a;
 	t_stack	*b;
 	t_stack	*temp1;
-	t_stack	*temp2;
-
-	a = ft_new_stack(42);
-	b = ft_new_stack(55);
-	a->next_value = ft_new_stack(43);
-	b->next_value = ft_new_stack(56);
-	a->next_value->next_value = ft_new_stack(44);
-	b->next_value->next_value = ft_new_stack(57);
+	a = NULL;
+	ft_stackadd_back(&a, ft_new_stack(9));
+	ft_stackadd_back(&a, ft_new_stack(36));
+	ft_stackadd_back(&a, ft_new_stack(78));
+	ft_stackadd_back(&a, ft_new_stack(98));
+	ft_stackadd_back(&a, ft_new_stack(36));
+	ft_stackadd_back(&a, ft_new_stack(95));
+	ft_stackadd_back(&a, ft_new_stack(93));
+	ft_stackadd_back(&a, ft_new_stack(71));
+	ft_stackadd_back(&a, ft_new_stack(82));
+	ft_stackadd_back(&a, ft_new_stack(52));
+	b = ft_reader(argc, argv);
 	temp1 = a;
 	while (temp1)
 	{
@@ -32,41 +36,19 @@ int	main(void)
 		temp1 = temp1->next_value;
 	}
 	printf("---------------\n");
-	temp2 = b;
-	while (temp2)
-	{
-		printf("%d\n", temp2->value);
-		temp2 = temp2->next_value;
-	}
-	printf("----------------\n");
-	ft_push_a(&a, &b);
-	temp1 = a;
+    
+	/* temp1 = b;
 	while (temp1)
 	{
 		printf("%d\n", temp1->value);
 		temp1 = temp1->next_value;
 	}
-	printf("---------------\n");
-	temp2 = b;
-	while (temp2)
-	{
-		printf("%d\n", temp2->value);
-		temp2 = temp2->next_value;
-	}
-	ft_push_b(&a, &b);
-	temp1 = a;
+	printf("---------------\n"); */
+	/* temp1 = b;
 	while (temp1)
 	{
 		printf("%d\n", temp1->value);
 		temp1 = temp1->next_value;
 	}
-	printf("---------------\n");
-	temp2 = b;
-	while (temp2)
-	{
-		printf("%d\n", temp2->value);
-		temp2 = temp2->next_value;
-	}
-	free(a);
-	free(b);
+	printf("---------------\n"); */
 }

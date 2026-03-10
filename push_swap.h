@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:20:43 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/02/28 10:47:07 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/02 21:44:58 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,9 @@ void				ft_rotate_a_b(t_stack **a, t_stack **b);
 void				ft_reverse_rotate_a(t_stack **a);
 void				ft_reverse_rotate_b(t_stack **b);
 void				ft_reverse_rotate_a_b(t_stack **a, t_stack **b);
+float				ft_compute_disorder(t_stack **a);
+void				stack_printer(t_stack **a);
+void				ft_simple_algorithm(t_stack **a);
+t_stack				*ft_stack_creator(t_stack *a, char *argv[], int argc,
+						char **split);
+t_stack				*ft_reader(int argc, char *argv[]);
