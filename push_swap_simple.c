@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 09:18:08 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/10 10:39:57 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/10 20:24:35 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,13 @@ void	ft_three_sorter(t_stack **c)
 	}
 }
 
-void	ft_simple_algorithm(t_stack **a)
+void	ft_helper_simple_algorithm(t_stack **a, int size)
 {
-	int	sorted;
-	int	size;
 	int	i;
+	int	sorted;
 	int	j;
 
-	sorted = 0;
 	i = 0;
-	size = ft_stack_size(a);
-	/* if (size == 3)
-	{
-		ft_three_sorter(a);
-		return ;
-	} */
 	while (i < size - 1)
 	{
 		sorted = 0;
@@ -85,12 +77,21 @@ void	ft_simple_algorithm(t_stack **a)
 		i++;
 		ft_rotate_a(a);
 		if (sorted == 0)
-		{
-			printf("-----\n");
-			stack_printer(a);
 			return ;
-		}
 	}
+}
+
+void	ft_simple_algorithm(t_stack **a)
+{
+	int	size;
+
+	size = ft_stack_size(a);
+	if (size == 3)
+	{
+		ft_three_sorter(a);
+		return ;
+	}
+	ft_helper_simple_algorithm(a, size);
 }
 
 int	main(int argc, char *argv[])
@@ -99,10 +100,10 @@ int	main(int argc, char *argv[])
 
 	//t_stack	*b;
 	a = ft_reader(argc, argv);
-	stack_printer(&a);
-	printf("----------\n");
+	/* stack_printer(&a);
+	printf("----------\n"); */
 	ft_simple_algorithm(&a);
-	stack_printer(&a);
+	/* stack_printer(&a); */
 	//printf("----------\n");
 	/* stack_printer(&a);
 	printf("----------\n"); */
