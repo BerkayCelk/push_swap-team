@@ -14,13 +14,20 @@ static void	ft_free(char **doublearray)
 	}
 	free(doublearray);
 }
+int	flag_checker(int argc, char *argv[])
+{
+	if (ft_strncmp(argv[1],"--simple",8))
+		return (2);
+	else
+		return (1);
+}
 
 t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 {
 	int	i;
 	int	j;
 
-	i = 1;
+	i = flag_checker(argc, argv);
 	while (i < argc)
 	{
 		split = ft_split(argv[i], ' ');
@@ -50,7 +57,7 @@ t_stack	*ft_reader(int argc, char *argv[])
 	return (ft_stack_creator(a, argv, argc, split));
 }
 
-/* int	main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_stack	*temp;
 
@@ -61,4 +68,4 @@ t_stack	*ft_reader(int argc, char *argv[])
 		temp = temp->next_value;
 	}
 	system("Leaks a.out");
-} */
+}

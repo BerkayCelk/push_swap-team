@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 10:06:01 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/02 17:42:51 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/14 16:37:30 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ float	ft_compute_disorder(t_stack **a)
 	}
 	return (mistakes / total_pairs);
 }
-int	main(void)
+/* int	main(void)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -69,3 +69,4 @@ int	main(void)
 	printf("%f", ft_compute_disorder(&b));
 	//stack_printer(&a);
 }
+ */

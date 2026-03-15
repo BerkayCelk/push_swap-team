@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_middle_algorithm.c                       :+:      :+:    :+:   */
+/*   push_swap_medium_algorithm.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 20:25:56 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/11 17:20:01 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/11 17:29:32 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_middle_algorithm(t_stack **a)
+void	ft_medium_algorithm(t_stack **a)
 {
 	t_stack	*b;
 

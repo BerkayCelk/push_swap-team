@@ -6,22 +6,31 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 09:18:08 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/10 20:24:35 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/14 21:29:21 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_printer(t_stack **a)
+void	stack_printer(t_stack **a, char x)
 {
 	t_stack	*temp;
 
+	if (!a || !*a)
+		return ;
 	temp = *a;
+	printf("Stack %c\n", x);
 	while (temp)
 	{
-		printf("%d\n", temp->value);
+		printf("Value: %d	Index: %d	Target_Index: %d	Cost_A: %d	Cost_B:%d\n",
+				temp->value,
+				temp->index,
+				temp->target_index,
+				temp->cost_a,
+				temp->cost_b);
 		temp = temp->next_value;
 	}
+	printf("--------------------\n");
 }
 
 void	ft_three_sorter(t_stack **c)
@@ -92,20 +101,4 @@ void	ft_simple_algorithm(t_stack **a)
 		return ;
 	}
 	ft_helper_simple_algorithm(a, size);
-}
-
-int	main(int argc, char *argv[])
-{
-	t_stack	*a;
-
-	//t_stack	*b;
-	a = ft_reader(argc, argv);
-	/* stack_printer(&a);
-	printf("----------\n"); */
-	ft_simple_algorithm(&a);
-	/* stack_printer(&a); */
-	//printf("----------\n");
-	/* stack_printer(&a);
-	printf("----------\n"); */
-	//stack_printer(&b);
 }

@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:20:43 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/02 21:44:58 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/14 21:26:35 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define INT_MININMUM -2147483648
+#define INT_MAXIMUM 2147483647
+
 typedef struct s_stack
 {
 	struct s_stack	*prev_value;
 	int				value;
+	int				index;
+	int				target_index;
+	int				cost_a;
+	int				cost_b;
 	struct s_stack	*next_value;
 }					t_stack;
 
@@ -38,8 +45,17 @@ void				ft_reverse_rotate_a(t_stack **a);
 void				ft_reverse_rotate_b(t_stack **b);
 void				ft_reverse_rotate_a_b(t_stack **a, t_stack **b);
 float				ft_compute_disorder(t_stack **a);
-void				stack_printer(t_stack **a);
+void				stack_printer(t_stack **a, char x);
 void				ft_simple_algorithm(t_stack **a);
 t_stack				*ft_stack_creator(t_stack *a, char *argv[], int argc,
 						char **split);
 t_stack				*ft_reader(int argc, char *argv[]);
+void				ft_stack_indexing(t_stack **a);
+void				ft_push_swap_turk_algorithm(t_stack **a);
+int					ft_push_swap_finding_target_node(t_stack **b, int value_a);
+void				ft_push_swap_cost_b(t_stack **a, t_stack **b);
+void				ft_push_swap_cost_a(t_stack **a);
+void				ft_stack_indexing(t_stack **a);
+void				ft_push_swap_complex_algorithm(t_stack **a);
+int					max_bit_long(t_stack **a);
+int					bit_long(int value);

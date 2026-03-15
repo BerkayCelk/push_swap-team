@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:20:15 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/02/27 23:36:55 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/11 20:48:03 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new)
 	if (*stack)
 		(*stack)->prev_value = new;
 	*stack = new;
+	(*stack)->prev_value = NULL;
 }
 
 t_stack	*ft_stacklast(t_stack *stack)
@@ -62,6 +63,7 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	temp = ft_stacklast(*stack);
 	temp->next_value = new;
 	new->prev_value = temp;
+	new->next_value = NULL;
 }
 
 int ft_stack_size(t_stack **stack)
