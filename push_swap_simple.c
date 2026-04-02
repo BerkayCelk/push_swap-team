@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 09:18:08 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/18 10:06:25 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/02 20:50:40 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,39 +77,6 @@ void	ft_two_sorter(t_stack **b)
 		ft_rotate_a(b);
 }
 
-void	ft_five_sorter(t_stack **a)
-{
-	t_stack	*b;
-	int		min;
-	int		min_pos;
-	t_stack	*temp;
-	int		i;
-	int		j;
-
-	b = NULL;
-	min = INT_MAXIMUM;
-	min_pos = 0;
-	temp = *a;
-	ft_stack_indexing(a);
-	i = 0;
-	while (temp)
-	{
-		if (temp->value < min)
-		{
-			min = temp->value;
-			temp->index = i;
-		}
-		temp->next_value;
-		i++;
-	}
-	j = 0;
-	while (j < i)
-	{
-		ft_rotate_a(a);
-	}
-	ft_push_b(a, &b);
-}
-
 void	ft_helper_simple_algorithm(t_stack **a, int size)
 {
 	int	i;
@@ -149,19 +116,4 @@ void	ft_simple_algorithm(t_stack **a)
 		return ;
 	}
 	ft_helper_simple_algorithm(a, size);
-}
-
-int	main(void)
-{
-	t_stack	*a;
-
-	a = ft_new_stack(5);
-	ft_stackadd_back(&a, ft_new_stack(4));
-	ft_stackadd_back(&a, ft_new_stack(3));
-	ft_stackadd_back(&a, ft_new_stack(2));
-	ft_stackadd_back(&a, ft_new_stack(1));
-	printf("%d", ft_min_finder(&a));
-	/* stack_printer(&a, 'A');
-	ft_five_sorter(&a);
-	stack_printer(&a, 'A'); */
 }

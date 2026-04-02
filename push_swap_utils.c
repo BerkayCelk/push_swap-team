@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:20:15 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/11 20:48:03 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/02 20:50:54 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,3 @@ int ft_stack_size(t_stack **stack)
     return(i);
 }
 
-//norm bound there is 5 function above.

@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:20:43 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/17 20:24:17 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/02 20:53:22 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,3 +75,11 @@ void				ft_complex_algorithm(t_stack **a);
 int					max_bit_long(t_stack **a);
 int					bit_long(int value);
 int					*stack_to_arr(t_stack **a);
+void				format_lmt_ctrl(int argc, char **argv);
+t_stack				*stack_init(int argc, char **argv);
+void				ft_stack_clear(t_stack *stack);
+void				med_algo(t_stack **a);
+long int			ft_atol(const char *str);
+void				ft_error(void);
+void				ft_free_res(char **res);
+void				ft_adaptive_algorithm(t_stack **a);

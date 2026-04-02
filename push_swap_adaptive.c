@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 00:55:08 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/14 22:19:35 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/02 20:36:23 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	ft_adaptive_algorithm(t_stack **a)
     }
     else if(0.2 <= disorder && disorder < 0.5)
     {
-        ft_medium_algortihm(a);
+        med_algo(a);
     }
     else if (0.5 <= disorder)
     {
-        ft_push_swap_complex_algorithm(a);
+        ft_complex_algorithm(a);
     }
 }

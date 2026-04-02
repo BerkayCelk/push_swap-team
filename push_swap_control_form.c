@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 11:51:51 by berkceli          #+#    #+#             */
-/*   Updated: 2026/04/02 20:20:57 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/02 20:45:54 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ static int	ft_isnum(char *str)
 		i++;
 	}
 	return (1);
-}
-
-void	ft_error(void)
-{
-	write(2, "Error\n", 6);
-	exit (1);
 }
 
 void	ft_free_res(char **res)

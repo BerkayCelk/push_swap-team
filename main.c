@@ -6,24 +6,18 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:55:53 by berkceli          #+#    #+#             */
-/*   Updated: 2026/04/02 20:23:11 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/02 20:54:16 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+
+int	main(int argc, char *argv[])
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-
-	if (argc == 1)
-		return (0);
-	format_lmt_ctrl(argc,argv);
-	stack_a = stack_init(argc, argv);
-	stack_b = NULL;
-
-	ft_stack_clear(stack_a);
-	ft_stack_clear(stack_b);
-	return (0);
+	t_stack	*a;
+    
+	a = ft_reader(argc, argv);
+	ft_adaptive_algorithm(&a);
+	system("Leaks a.out");
 }
