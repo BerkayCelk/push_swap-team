@@ -16,7 +16,9 @@ static void	ft_free(char **doublearray)
 }
 int	flag_checker(int argc, char *argv[])
 {
-	if (ft_strncmp(argv[1],"--simple",8))
+	if (argc < 2)
+		return(0);
+	else if (ft_strncmp(argv[1],"--simple",8))
 		return (2);
 	else
 		return (1);

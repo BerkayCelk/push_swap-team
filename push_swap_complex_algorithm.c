@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 17:34:23 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/15 16:25:41 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/17 20:40:09 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,22 +100,12 @@ int	*stack_to_arr(t_stack **a)
 	return (arr);
 }
 
-void	ft_push_swap_complex_algorithm(t_stack **a)
+void	ft_complex_algorithm_helper(t_stack **a, t_stack **b, int rotation,
+		int size)
 {
-	t_stack	*b;
-	int		*arr;
-	int		size;
-	int		rotation;
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
-	size = ft_stack_size(a);
-	b = NULL;
-	arr = stack_to_arr(a);
-	bubble_sort(arr, size);
-	ft_stack_arr_indexing(a, arr, size);
-	free(arr);
-	rotation = max_bit_long(a);
 	i = 0;
 	while (i < rotation)
 	{
@@ -125,13 +115,28 @@ void	ft_push_swap_complex_algorithm(t_stack **a)
 			if ((*a)->index >> i & 1)
 				ft_rotate_a(a);
 			else
-				ft_push_b(a, &b);
+				ft_push_b(a, b);
 			j++;
 		}
-		while (ft_stack_size(&b) > 0)
-			ft_push_a(a, &b);
+		while (ft_stack_size(b) > 0)
+			ft_push_a(a, b);
 		i++;
 	}
 }
 
+void	ft_complex_algorithm(t_stack **a)
+{
+	t_stack	*b;
+	int		*arr;
+	int		size;
+	int		rotation;
 
+	size = ft_stack_size(a);
+	b = NULL;
+	arr = stack_to_arr(a);
+	bubble_sort(arr, size);
+	ft_stack_arr_indexing(a, arr, size);
+	free(arr);
+	rotation = max_bit_long(a);
+	ft_complex_algorithm_helper(a, &b, rotation, size);
+}

@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:20:43 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/14 21:26:35 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/17 20:24:17 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ typedef struct s_stack
 	int				cost_b;
 	struct s_stack	*next_value;
 }					t_stack;
+
+typedef struct s_benchmark
+{
+	int				sa;
+	int				sb;
+	int				ss;
+	int				pa;
+	int				pb;
+	int				ra;
+	int				rb;
+	int				rr;
+	int				rra;
+	int				rrb;
+	int				rrr;
+}					t_benchmark;
 
 t_stack				*ft_new_stack(int new_value);
 void				ft_stackadd_front(t_stack **stack, t_stack *new);
@@ -56,6 +71,7 @@ int					ft_push_swap_finding_target_node(t_stack **b, int value_a);
 void				ft_push_swap_cost_b(t_stack **a, t_stack **b);
 void				ft_push_swap_cost_a(t_stack **a);
 void				ft_stack_indexing(t_stack **a);
-void				ft_push_swap_complex_algorithm(t_stack **a);
+void				ft_complex_algorithm(t_stack **a);
 int					max_bit_long(t_stack **a);
 int					bit_long(int value);
+int					*stack_to_arr(t_stack **a);

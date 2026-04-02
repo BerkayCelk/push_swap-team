@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 09:18:08 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/14 21:29:21 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/03/18 10:06:25 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	stack_printer(t_stack **a, char x)
 	printf("Stack %c\n", x);
 	while (temp)
 	{
-		printf("Value: %d	Index: %d	Target_Index: %d	Cost_A: %d	Cost_B:%d\n",
+		printf("Value: %d	Index: %d	Target_Index: %d	Cost_A:%d Cost_B: %d\n",
 				temp->value,
 				temp->index,
 				temp->target_index,
@@ -60,6 +60,54 @@ void	ft_three_sorter(t_stack **c)
 		ft_swap_a(c);
 		ft_reverse_rotate_a(c);
 	}
+}
+
+void	ft_two_sorter(t_stack **b)
+{
+	int		size;
+	t_stack	*first;
+	t_stack	*second;
+
+	size = ft_stack_size(b);
+	if (size > 2)
+		return ;
+	first = *b;
+	second = first->next_value;
+	if (second->value > first->value)
+		ft_rotate_a(b);
+}
+
+void	ft_five_sorter(t_stack **a)
+{
+	t_stack	*b;
+	int		min;
+	int		min_pos;
+	t_stack	*temp;
+	int		i;
+	int		j;
+
+	b = NULL;
+	min = INT_MAXIMUM;
+	min_pos = 0;
+	temp = *a;
+	ft_stack_indexing(a);
+	i = 0;
+	while (temp)
+	{
+		if (temp->value < min)
+		{
+			min = temp->value;
+			temp->index = i;
+		}
+		temp->next_value;
+		i++;
+	}
+	j = 0;
+	while (j < i)
+	{
+		ft_rotate_a(a);
+	}
+	ft_push_b(a, &b);
 }
 
 void	ft_helper_simple_algorithm(t_stack **a, int size)
@@ -101,4 +149,19 @@ void	ft_simple_algorithm(t_stack **a)
 		return ;
 	}
 	ft_helper_simple_algorithm(a, size);
+}
+
+int	main(void)
+{
+	t_stack	*a;
+
+	a = ft_new_stack(5);
+	ft_stackadd_back(&a, ft_new_stack(4));
+	ft_stackadd_back(&a, ft_new_stack(3));
+	ft_stackadd_back(&a, ft_new_stack(2));
+	ft_stackadd_back(&a, ft_new_stack(1));
+	printf("%d", ft_min_finder(&a));
+	/* stack_printer(&a, 'A');
+	ft_five_sorter(&a);
+	stack_printer(&a, 'A'); */
 }
