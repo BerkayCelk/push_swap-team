@@ -6,7 +6,7 @@
 #    By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/24 13:43:52 by ttezcan           #+#    #+#              #
-#    Updated: 2026/04/02 20:40:42 by ttezcan          ###   ########.fr        #
+#    Updated: 2026/04/06 22:21:21 by ttezcan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Wunused
 
-SRCS = main.c \
-push_swap_adaptive.c \
+SRCS = push_swap_adaptive.c \
 push_swap_complex_algorithm.c \
 push_swap_control_form.c \
 push_swap_disorder_metric.c \

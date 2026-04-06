@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void	ft_free(char **doublearray)
+void	ft_free(char **doublearray)
 {
 	size_t	i;
 
@@ -59,15 +59,3 @@ t_stack	*ft_reader(int argc, char *argv[])
 	return (ft_stack_creator(a, argv, argc, split));
 }
 
-int	main(int argc, char *argv[])
-{
-	t_stack	*temp;
-
-	temp = ft_reader(argc, argv);
-	while (temp)
-	{
-		printf("%d\n", temp->value);
-		temp = temp->next_value;
-	}
-	system("Leaks a.out");
-}
