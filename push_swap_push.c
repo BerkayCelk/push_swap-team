@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	ft_push_a(t_stack **a, t_stack **b)
+void	ft_push_a(t_stack **a, t_stack **b,int *pa)
 {
 	t_stack	*temp;
 
@@ -14,9 +14,10 @@ void	ft_push_a(t_stack **a, t_stack **b)
 	temp->prev_value = NULL;
 	ft_stackadd_front(a, temp);
 	write(1, "pa\n", 3);
+	(*pa)++;
 }
 
-void	ft_push_b(t_stack **a, t_stack **b)
+void	ft_push_b(t_stack **a, t_stack **b,int *pb)
 {
 	t_stack	*temp;
 
@@ -30,4 +31,5 @@ void	ft_push_b(t_stack **a, t_stack **b)
 	temp->prev_value = NULL;
 	ft_stackadd_front(b, temp);
 	write(1, "pb\n", 3);
+	(*pb)++;
 }

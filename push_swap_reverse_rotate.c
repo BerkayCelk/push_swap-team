@@ -6,13 +6,13 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 10:12:06 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/02/28 10:46:45 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/02 21:10:11 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_reverse_rotate_a(t_stack **a)
+void	ft_reverse_rotate_a(t_stack **a,int *rra)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -29,9 +29,10 @@ void	ft_reverse_rotate_a(t_stack **a)
 	last->prev_value = NULL;
 	*a = last;
 	write(1, "rra\n", 4);
+	(*rra)++;
 }
 
-void	ft_reverse_rotate_b(t_stack **b)
+void	ft_reverse_rotate_b(t_stack **b,int *rrb)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -48,8 +49,9 @@ void	ft_reverse_rotate_b(t_stack **b)
 	last->prev_value = NULL;
 	*b = last;
 	write(1, "rrb\n", 4);
+	(*rrb)++;
 }
-void	ft_reverse_rotate_a_b(t_stack **a, t_stack **b)
+void	ft_reverse_rotate_a_b(t_stack **a, t_stack **b,int *rrr)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -74,4 +76,5 @@ void	ft_reverse_rotate_a_b(t_stack **a, t_stack **b)
 	last->prev_value = NULL;
 	*b = last;
 	write(1, "rrr\n", 4);
+	(*rrr)++;
 }

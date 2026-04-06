@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:20:43 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/02 20:53:22 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/06 20:09:18 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ typedef struct s_benchmark
 	int				rrb;
 	int				rrr;
 }					t_benchmark;
+
+typedef enum s_strategy
+{
+	SIMPLE,
+	MEDIUM,
+	COMPLEX,
+	ADAPTIVE,
+}					t_strategy;
 
 t_stack				*ft_new_stack(int new_value);
 void				ft_stackadd_front(t_stack **stack, t_stack *new);

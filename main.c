@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:55:53 by berkceli          #+#    #+#             */
-/*   Updated: 2026/04/02 20:54:16 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/02 21:33:06 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char *argv[])
 	t_stack	*a;
     
 	a = ft_reader(argc, argv);
+    int disorder = ft_compute_disorder(a);
 	ft_adaptive_algorithm(&a);
 	system("Leaks a.out");
 }
