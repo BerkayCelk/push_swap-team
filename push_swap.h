@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:20:43 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/06 20:09:18 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/06 20:14:48 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_benchmark
 	int				rra;
 	int				rrb;
 	int				rrr;
+	int				total;
 }					t_benchmark;
 
 typedef enum s_strategy
