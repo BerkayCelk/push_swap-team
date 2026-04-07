@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/06 21:42:53 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/06 22:33:48 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/07 21:22:52 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ typedef enum s_strategy
 	MEDIUM,
 	COMPLEX,
 	ADAPTIVE,
+	BENCH,
 }					t_strategy;
+
+//push_swap_error
+void				ft_error(void);
 
 // push_swap_adaptive
 t_strategy			ft_adaptive_algorithm(t_stack **a);
@@ -122,7 +126,7 @@ int					ft_stack_size(t_stack **stack);
 
 // push_swap
 void				ft_free(char **doublearray);
-int					flag_checker(int argc, char *argv[]);
+int					flag_checker(char *arg);
 t_stack				*ft_stack_creator(t_stack *a, char *argv[], int argc,
 						char **split);
 t_stack				*ft_reader(int argc, char *argv[]);

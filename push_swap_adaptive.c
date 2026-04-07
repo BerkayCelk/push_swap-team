@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 00:55:08 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/06 22:34:38 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/07 17:31:23 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ t_strategy	ft_adaptive_algorithm(t_stack **a)
         ft_complex_algorithm(a);
         return(COMPLEX);
     }
+    return(ADAPTIVE);
 }

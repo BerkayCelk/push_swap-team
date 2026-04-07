@@ -14,14 +14,21 @@ void	ft_free(char **doublearray)
 	}
 	free(doublearray);
 }
-int	flag_checker(int argc, char *argv[])
+int flag_checker(char *arg)
 {
-	if (argc < 2)
-		return(0);
-	else if (ft_strncmp(argv[1],"--simple",8))
-		return (2);
-	else
-		return (1);
+    if (!arg)
+        return (-1);
+    if (ft_strncmp(arg, "--simple", 9) == 0)
+        return (0);
+    else if (ft_strncmp(arg, "--medium", 9) == 0)
+        return (1);
+    else if (ft_strncmp(arg, "--complex", 10) == 0)
+        return (2);
+    else if (ft_strncmp(arg, "--adaptive", 11) == 0)
+        return (3);
+    else if (ft_strncmp(arg, "--bench", 8) == 0)
+        return (4);
+    return (-1);
 }
 
 t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
@@ -29,7 +36,9 @@ t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 	int	i;
 	int	j;
 
-	i = flag_checker(argc, argv);
+	i = 0;
+	while (flag_checker(argv[i], i) != -1)
+		i++;
 	while (i < argc)
 	{
 		split = ft_split(argv[i], ' ');
@@ -58,4 +67,3 @@ t_stack	*ft_reader(int argc, char *argv[])
 	split = NULL;
 	return (ft_stack_creator(a, argv, argc, split));
 }
-
