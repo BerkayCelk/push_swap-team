@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 21:15:17 by berkceli          #+#    #+#             */
-/*   Updated: 2026/04/02 19:22:31 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/08 20:23:22 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	max_pos(t_stack **b, int *id_x)
 	return (max_pos);
 }
 
-static void	push_chnk_b(t_stack **a, t_stack **b, int range)
+static void	push_chnk_b(t_stack **a, t_stack **b, int range, t_benchmark *bench)
 {
 	int	cntr;
 
@@ -66,22 +66,22 @@ static void	push_chnk_b(t_stack **a, t_stack **b, int range)
 	{
 		if ((*a)->index <= cntr)
 		{
-			ft_push_b(a, b);
+			ft_push_b(a, b, bench);
 			if (*b && (*b)->next_value)
-				ft_rotate_b(b);
+				ft_rotate_b(b, bench);
 			cntr++;
 		}
 		else if ((*a)->index <= cntr + range)
 		{
-			ft_push_b(a, b);
+			ft_push_b(a, b, bench);
 			cntr++;
 		}
 		else
-			ft_rotate_a(a);
+			ft_rotate_a(a, bench);
 	}
 }
 
-static void	push_back_a(t_stack **a, t_stack **b)
+static void	push_back_a(t_stack **a, t_stack **b, t_benchmark *bench)
 {
 	int	pos;
 	int	size;
@@ -93,15 +93,15 @@ static void	push_back_a(t_stack **a, t_stack **b)
 		size = ft_stack_size(b);
 		if (pos <= size / 2)
 			while ((*b)->index != id_x)
-				ft_rotate_b(b);
+				ft_rotate_b(b, bench);
 		else
 			while ((*b)->index != id_x)
-				ft_reverse_rotate_b(b);
-		ft_push_a(a, b);
+				ft_reverse_rotate_b(b, bench);
+		ft_push_a(a, b, bench);
 	}
 }
 
-void	med_algo(t_stack **a)
+void	med_algo(t_stack **a, t_benchmark *bench)
 {
 	t_stack	*b;
 	int		size;
@@ -111,7 +111,7 @@ void	med_algo(t_stack **a)
 	size = ft_stack_size(a);
 	if (size <= 3)
 	{
-		ft_simple_algorithm(a);
+		ft_simple_algorithm(a, bench);
 		return ;
 	}
 	set_rnk_index(a);
@@ -119,6 +119,7 @@ void	med_algo(t_stack **a)
 		range = 20;
 	else
 		range = 40;
-	push_chnk_b(a, &b, range);
-	push_back_a(a, &b);
+	push_chnk_b(a, &b, range, bench);
+	push_back_a(a, &b, bench);
 }
+

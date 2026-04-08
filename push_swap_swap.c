@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	ft_swap_a(t_stack **a, int *sa)
+void	ft_swap_a(t_stack **a,t_benchmark *bench)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -18,11 +18,12 @@ void	ft_swap_a(t_stack **a, int *sa)
 	if (third)
 		third->prev_value = first;
 	*a = second;
-	write(1, "sa\n", 3);
-	(*sa)++;
+	if(bench->bench == 0)
+		write(1, "sa\n", 3);
+	bench->sa++;
 }
 
-void	ft_swap_b(t_stack **b, int *sb)
+void	ft_swap_b(t_stack **b,t_benchmark *bench)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -40,11 +41,12 @@ void	ft_swap_b(t_stack **b, int *sb)
 	if (third)
 		third->next_value = first;
 	*b = second;
-	write(1, "sb\n", 3);
-	(*sb)++;
+	if(bench->bench == 0)
+		write(1, "sb\n", 3);
+	bench->pb++;
 }
 
-void	ft_swap_a_b(t_stack **a, t_stack **b,int *ss)
+void	ft_swap_a_b(t_stack **a, t_stack **b,t_benchmark *bench)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -70,6 +72,7 @@ void	ft_swap_a_b(t_stack **a, t_stack **b,int *ss)
 	first->prev_value = second;
 	third->next_value = first;
 	*b = second;
-	write(1, "ss\n", 3);
-	(*ss)++;
+	if(bench->bench == 0)
+		write(1, "ss\n", 3);
+	bench->ss++;
 }

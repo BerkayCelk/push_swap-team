@@ -14,21 +14,21 @@ void	ft_free(char **doublearray)
 	}
 	free(doublearray);
 }
-int flag_checker(char *arg)
+int	flag_checker(char *arg)
 {
-    if (!arg)
-        return (-1);
-    if (ft_strncmp(arg, "--simple", 9) == 0)
-        return (0);
-    else if (ft_strncmp(arg, "--medium", 9) == 0)
-        return (1);
-    else if (ft_strncmp(arg, "--complex", 10) == 0)
-        return (2);
-    else if (ft_strncmp(arg, "--adaptive", 11) == 0)
-        return (3);
-    else if (ft_strncmp(arg, "--bench", 8) == 0)
-        return (4);
-    return (-1);
+	if (!arg)
+		return (-1);
+	if (ft_strncmp(arg, "--simple", 9) == 0)
+		return (0);
+	else if (ft_strncmp(arg, "--medium", 9) == 0)
+		return (1);
+	else if (ft_strncmp(arg, "--complex", 10) == 0)
+		return (2);
+	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
+		return (3);
+	else if (ft_strncmp(arg, "--bench", 8) == 0)
+		return (4);
+	return (-1);
 }
 
 t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
@@ -37,7 +37,7 @@ t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 	int	j;
 
 	i = 0;
-	while (flag_checker(argv[i], i) != -1)
+	while (flag_checker(argv[i]) != -1)
 		i++;
 	while (i < argc)
 	{
@@ -46,7 +46,7 @@ t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 		while (split[j])
 		{
 			if (a == NULL)
-				a = ft_new_stack(ft_atoi(split[j]));
+				a = ft_new_stack(ft_atol(split[j]));
 			else
 				ft_stackadd_back(&a, ft_new_stack(ft_atoi(split[j])));
 			j++;

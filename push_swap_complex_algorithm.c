@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 17:34:23 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/06 22:24:00 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/08 21:04:11 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,13 @@ int	*stack_to_arr(t_stack **a)
 }
 
 void	ft_complex_algorithm_helper(t_stack **a, t_stack **b, int rotation,
-		t_benchmark bench)
+		t_benchmark *bench)
 {
 	int	i;
 	int	j;
+	int	size;
 
-	int size = ft_stack_size(a);
+	size = ft_stack_size(a);
 	i = 0;
 	while (i < rotation)
 	{
@@ -114,42 +115,31 @@ void	ft_complex_algorithm_helper(t_stack **a, t_stack **b, int rotation,
 		while (j < size)
 		{
 			if ((*a)->index >> i & 1)
-				ft_rotate_a(a,bench.ra);
+				ft_rotate_a(a,bench);
 			else
-				ft_push_b(a, b,bench.pb);
+				ft_push_b(a, b,bench);
 			j++;
 		}
 		while (ft_stack_size(b) > 0)
-			ft_push_a(a, b,bench.pa);
+			ft_push_a(a, b,bench);
 		i++;
 	}
 }
 
-void	ft_complex_algorithm(t_stack **a)
+void	ft_complex_algorithm(t_stack **a,t_benchmark *bench)
 {
-	t_stack	*b;
-	int		*arr;
-	int		size;
-	int		rotation;
-	t_benchmark bench = {0};
+	t_stack		*b;
+	int			*arr;
+	int			size;
+	int			rotation;
+	// int			i;
 
 	size = ft_stack_size(a);
 	b = NULL;
 	arr = stack_to_arr(a);
 	bubble_sort(arr, size);
 	ft_stack_arr_indexing(a, arr, size);
-	ft_free(arr);
+	free(arr);
 	rotation = max_bit_long(a);
 	ft_complex_algorithm_helper(a, &b, rotation, bench);
-}
-
-
-int	main(int argc, char *argv[])
-{
-	t_stack	*a;
-	int		disorder;
-
-	a = ft_reader(argc, argv);
-	ft_complex_algorithm(a);
-    
 }

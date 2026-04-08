@@ -6,7 +6,7 @@
 #    By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/24 13:43:52 by ttezcan           #+#    #+#              #
-#    Updated: 2026/04/06 22:21:21 by ttezcan          ###   ########.fr        #
+#    Updated: 2026/04/08 21:06:10 by ttezcan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,34 +15,25 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Wunused
 
-SRCS = push_swap_adaptive.c \
-push_swap_complex_algorithm.c \
-push_swap_control_form.c \
-push_swap_disorder_metric.c \
-push_swap_error.c \
-push_swap_init.c \
-push_swap_medium_algorithm.c \
-push_swap_push.c \
-push_swap_reverse_rotate.c \
-push_swap_rotate.c \
-push_swap_simple.c \
-push_swap_stack_clear.c \
-push_swap_swap.c \
-push_swap_utils.c \
-push_swap.c \
-ft_atol.c \
-mahmut.c
+SRCS =  ft_atol.c push_swap_complex_algorithm.c push_swap_reverse_rotate.c push_swap_control_form.c push_swap_rotate.c \
+main.c push_swap_disorder_metric.c push_swap_simple.c push_swap.c push_swap_error.c \
+push_swap_stack_clear.c push_swap_init.c push_swap_swap.c push_swap_adaptive.c push_swap_medium_algorithm.c \
+push_swap_bench.c push_swap_push.c push_swap_utils.c 
 
 OBJS = $(SRCS:.c=.o)
 
+LIBFT = ./libft/libft.a
+LIBFT_DIR = ./libft
 
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 all: $(NAME)
-$(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJS) $(LIBFT)
 
 fclean: clean
 	@rm -rf $(NAME)
