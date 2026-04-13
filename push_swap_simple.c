@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 09:18:08 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/08 19:50:33 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/13 18:13:23 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	ft_simple_algorithm(t_stack **a,t_benchmark *bench)
 		return ;
 	}
 	ft_helper_simple_algorithm(a, size,bench);
+	stack_printer(a,'A');
 }
 
 

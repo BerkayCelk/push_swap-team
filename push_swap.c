@@ -36,8 +36,8 @@ t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (flag_checker(argv[i]) != -1)
+	i = 1;
+	while (argv[i][0] == '-')
 		i++;
 	while (i < argc)
 	{

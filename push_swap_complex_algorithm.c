@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 17:34:23 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/08 21:04:11 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/13 22:26:45 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,26 +115,27 @@ void	ft_complex_algorithm_helper(t_stack **a, t_stack **b, int rotation,
 		while (j < size)
 		{
 			if ((*a)->index >> i & 1)
-				ft_rotate_a(a,bench);
+				ft_rotate_a(a, bench);
 			else
-				ft_push_b(a, b,bench);
+				ft_push_b(a, b, bench);
 			j++;
 		}
 		while (ft_stack_size(b) > 0)
-			ft_push_a(a, b,bench);
+			ft_push_a(a, b, bench);
 		i++;
 	}
 }
 
-void	ft_complex_algorithm(t_stack **a,t_benchmark *bench)
+void	ft_complex_algorithm(t_stack **a, t_benchmark *bench)
 {
-	t_stack		*b;
-	int			*arr;
-	int			size;
-	int			rotation;
-	// int			i;
+	t_stack	*b;
+	int		*arr;
+	int		size;
+	int		rotation;
 
 	size = ft_stack_size(a);
+	if (size == 3)
+		ft_three_sorter(a, bench);
 	b = NULL;
 	arr = stack_to_arr(a);
 	bubble_sort(arr, size);
