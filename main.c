@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:55:53 by berkceli          #+#    #+#             */
-/*   Updated: 2026/04/13 22:03:16 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/14 18:56:57 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	main(int argc, char *argv[])
 	init_bench(&bench);
 	strategy_executed = 0;
 	if (argc < 2)
+		return (0);
+	else if (ft_check_error(argc, argv) == 0)
 		return (0);
 	a = ft_reader(argc, argv);
 	disorder = ft_compute_disorder(&a);

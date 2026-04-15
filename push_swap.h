@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/06 21:42:53 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/08 20:56:16 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/14 18:57:06 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ long int			ft_atol(const char *str);
 void				ft_error(void);
 
 // push_swap_adaptive
-t_strategy			ft_adaptive_algorithm(t_stack **a,t_benchmark *bench);
+t_strategy			ft_adaptive_algorithm(t_stack **a, t_benchmark *bench);
 
 // push_swap_bench
 char				*ft_strategy_writer(t_strategy strategy);
@@ -86,6 +86,9 @@ void				format_lmt_ctrl(int argc, char **argv);
 
 // push_swap_disorder_metric
 float				ft_compute_disorder(t_stack **a);
+
+// push_swap_error
+int					ft_check_error(int argc, char *argv[]);
 
 // push_swap_init
 t_stack				*stack_init(int argc, char **argv);

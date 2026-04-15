@@ -24,7 +24,8 @@ int	flag_checker(char *arg)
 		return (1);
 	else if (ft_strncmp(arg, "--complex", 10) == 0)
 		return (2);
-	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
+	else if (ft_strncmp(arg, "--adaptive", 11) == 0
+			|| (-2147483648 <= ft_atol(arg) && ft_atol(arg) <= 2147483647))
 		return (3);
 	else if (ft_strncmp(arg, "--bench", 8) == 0)
 		return (4);
