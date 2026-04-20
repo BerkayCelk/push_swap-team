@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:55:53 by berkceli          #+#    #+#             */
-/*   Updated: 2026/04/20 18:50:17 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/20 18:57:26 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	main(int argc, char *argv[])
 	t_benchmark	bench;
 	float		disorder;
 	int			ss;
+	int			x;
 
 	ss = 0;
 	b = is_there_bench(argv);
@@ -68,30 +69,32 @@ int	main(int argc, char *argv[])
 	s = -1;
 	while (i < argc)
 	{
-		s = flag_checker(argv[i]);
-		if (b == 1)
-			bench.bench = 1;
-		if (s == 0)
-		{
-			ss = 0;
-			ft_simple_algorithm(&a, &bench);
-		}
-		else if (s == 1)
-		{
-			ss = 1;
-			med_algo(&a, &bench);
-		}
-		else if (s == 2)
-		{
-			ss = 2;
-			ft_complex_algorithm(&a, &bench);
-		}
-		else
-		{
-			ss = 3;
-			ft_adaptive_algorithm(&a, &bench);
-		}
+		x = flag_checker(argv[i]);
+		if (x != -1)
+			s = x;
 		i++;
+	}
+	if (b == 1)
+		bench.bench = 1;
+	if (s == 0)
+	{
+		ss = 0;
+		ft_simple_algorithm(&a, &bench);
+	}
+	else if (s == 1)
+	{
+		ss = 1;
+		med_algo(&a, &bench);
+	}
+	else if (s == 2)
+	{
+		ss = 2;
+		ft_complex_algorithm(&a, &bench);
+	}
+	else
+	{
+		ss = 3;
+		ft_adaptive_algorithm(&a, &bench);
 	}
 	if (b == 1)
 		ft_benchmark(disorder, ss, &bench);
