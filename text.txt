@@ -1,0 +1,15 @@
+Stack A
+Value: 3	Index: 0	Target_Index: 0	Cost_A:0 Cost_B: 0
+Value: 2	Index: 0	Target_Index: 0	Cost_A:0 Cost_B: 0
+Value: 1	Index: 0	Target_Index: 0	Cost_A:0 Cost_B: 0
+--------------------
+[bench] disorder: 1
+[bench] strategy: Simple O(n^2)
+[bench] total_ops: 2
+[bench] sa: 1 sb: 0 ss: 0 pa: 0 pb: 0
+[bench] ra: 0 rb: 0 rr: 0 rra: 1 rrb: 0 rrr: 0
+Stack A
+Value: 1	Index: 0	Target_Index: 0	Cost_A:0 Cost_B: 0
+Value: 2	Index: 0	Target_Index: 0	Cost_A:0 Cost_B: 0
+Value: 3	Index: 0	Target_Index: 0	Cost_A:0 Cost_B: 0
+--------------------

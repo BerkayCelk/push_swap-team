@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 17:26:09 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/14 18:58:48 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/15 21:46:53 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,24 @@ static int	ft_isnum(char *str)
 
 int	ft_check_error(int argc, char *argv[])
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
+	i = 1;
+	while (i < argc)
+	{
+		j = i + 1;
+		while (j < argc)
+		{
+			if ((flag_checker(argv[i]) != -1 && flag_checker(argv[j]) != -1) && flag_checker(argv[i]) == flag_checker(argv[j]))
+			{
+				ft_error();
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
 	i = 1;
 	while (ft_isnum(argv[i]) != 0)
 	{
@@ -49,7 +64,7 @@ int	ft_check_error(int argc, char *argv[])
 		if (ft_isnum(argv[i]) == 1)
 		{
 			ft_error();
-			return(0) ;
+			return (0);
 		}
 		i++;
 	}
@@ -66,11 +81,11 @@ int	ft_check_error(int argc, char *argv[])
 			if (ft_atol(argv[i]) == ft_atol(argv[j]))
 			{
 				ft_error();
-				return(0) ;
+				return (0);
 			}
 			j++;
 		}
 		i++;
 	}
-	return(1) ;
+	return (1);
 }
