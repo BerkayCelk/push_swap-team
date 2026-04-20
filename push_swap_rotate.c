@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: berkceli <berkceli@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 23:22:44 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/16 21:16:51 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/20 17:15:42 by berkceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

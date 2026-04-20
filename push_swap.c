@@ -14,6 +14,7 @@ void	ft_free(char **doublearray)
 	}
 	free(doublearray);
 }
+
 int	flag_checker(char *arg)
 {
 	if (!arg)
@@ -31,27 +32,39 @@ int	flag_checker(char *arg)
 	return (-1);
 }
 
+static int	is_optional_flag(char *arg)
+{
+	int	flag;
+
+	flag = flag_checker(arg);
+	return (flag >= SIMPLE && flag <= BENCH);
+}
+
 t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 {
 	int	i;
 	int	j;
+	long	value;
 
 	i = 1;
-	while (argv[i][0] == '-')
-		i++;
 	while (i < argc)
 	{
+		if (is_optional_flag(argv[i]))
+		{
+			i++;
+			continue ;
+		}
 		split = ft_split(argv[i], ' ');
 		j = 0;
 		while (split[j])
 		{
+			value = ft_atol(split[j]);
 			if (a == NULL)
-				a = ft_new_stack(ft_atol(split[j]));
+				a = ft_new_stack((int)value);
 			else
-				ft_stackadd_back(&a, ft_new_stack(ft_atoi(split[j])));
+				ft_stackadd_back(&a, ft_new_stack((int)value));
 			j++;
 		}
-		j = 0;
 		ft_free(split);
 		i++;
 	}

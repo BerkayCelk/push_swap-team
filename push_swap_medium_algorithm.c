@@ -34,70 +34,164 @@ static void	set_rnk_index(t_stack **a)
 	}
 }
 
-static int	max_pos(t_stack **b, int *id_x)
+static int	chunk_size(int size)
 {
-	t_stack	*temp;
-	int		pos;
-	int		max_pos;
+	int	chunk;
 
-	temp = *b;
-	*id_x = temp->index;
-	max_pos = 0;
-	pos = 0;
-	while (temp)
-	{
-		if (temp->index > *id_x)
-		{
-			*id_x = temp->index;
-			max_pos = pos;
-		}
-		pos++;
-		temp = temp->next_value;
-	}
-	return (max_pos);
+	chunk = 1;
+	while (chunk * chunk < size)
+		chunk++;
+	return (chunk);
 }
 
-static void	push_chnk_b(t_stack **a, t_stack **b, int range, t_benchmark *bench)
+static int	find_top_chunk_pos(t_stack **a, int min_idx, int max_idx)
 {
-	int	cntr;
+	t_stack	*current;
+	int		pos;
 
-	cntr = 0;
-	while (*a)
+	current = *a;
+	pos = 0;
+	while (current)
 	{
-		if ((*a)->index <= cntr)
-		{
-			ft_push_b(a, b, bench);
-			if (*b && (*b)->next_value)
-				ft_rotate_b(b, bench);
-			cntr++;
-		}
-		else if ((*a)->index <= cntr + range)
-		{
-			ft_push_b(a, b, bench);
-			cntr++;
-		}
-		else
+		if (current->index >= min_idx && current->index <= max_idx)
+			return (pos);
+		current = current->next_value;
+		pos++;
+	}
+	return (-1);
+}
+
+static int	find_bottom_chunk_pos(t_stack **a, int min_idx, int max_idx)
+{
+	t_stack	*current;
+	int		pos;
+	int		last_match;
+
+	current = *a;
+	pos = 0;
+	last_match = -1;
+	while (current)
+	{
+		if (current->index >= min_idx && current->index <= max_idx)
+			last_match = pos;
+		current = current->next_value;
+		pos++;
+	}
+	return (last_match);
+}
+
+static void	rotate_to_chunk(t_stack **a, int min_idx, int max_idx,
+	t_benchmark *bench)
+{
+	int	top_pos;
+	int	bottom_pos;
+	int	size;
+
+	top_pos = find_top_chunk_pos(a, min_idx, max_idx);
+	bottom_pos = find_bottom_chunk_pos(a, min_idx, max_idx);
+	size = ft_stack_size(a);
+	if (top_pos == -1 || bottom_pos == -1)
+		return ;
+	if (top_pos <= size - bottom_pos)
+	{
+		while (top_pos-- > 0)
 			ft_rotate_a(a, bench);
 	}
+	else
+	{
+		while (bottom_pos++ < size)
+			ft_reverse_rotate_a(a, bench);
+	}
 }
 
-static void	push_back_a(t_stack **a, t_stack **b, t_benchmark *bench)
+static void	push_chnk_b(t_stack **a, t_stack **b, int size, t_benchmark *bench)
+{
+	int	chunk_len;
+	int	chunk_start;
+	int	chunk_end;
+	int	pushed;
+
+	chunk_len = chunk_size(size);
+	chunk_start = 0;
+	while (chunk_start < size)
+	{
+		chunk_end = chunk_start + chunk_len - 1;
+		if (chunk_end >= size)
+			chunk_end = size - 1;
+		pushed = chunk_start;
+		while (pushed <= chunk_end)
+		{
+			rotate_to_chunk(a, chunk_start, chunk_end, bench);
+			ft_push_b(a, b, bench);
+			if (*b && (*b)->next_value
+				&& (*b)->index < chunk_start + ((chunk_end - chunk_start + 1) / 2))
+				ft_rotate_b(b, bench);
+			pushed++;
+		}
+		chunk_start += chunk_len;
+	}
+}
+
+static int	find_target_pos(t_stack **b, int target_idx)
+{
+	t_stack	*current;
+	int		pos;
+
+	current = *b;
+	pos = 0;
+	while (current)
+	{
+		if (current->index == target_idx)
+			return (pos);
+		current = current->next_value;
+		pos++;
+	}
+	return (-1);
+}
+
+static void	rotate_to_target_b(t_stack **b, int target_idx, t_benchmark *bench)
 {
 	int	pos;
 	int	size;
-	int	id_x;
 
-	while (*b)
+	pos = find_target_pos(b, target_idx);
+	size = ft_stack_size(b);
+	if (pos == -1)
+		return ;
+	if (pos <= size / 2)
 	{
-		pos = max_pos(b, &id_x);
-		size = ft_stack_size(b);
-		if (pos <= size / 2)
-			while ((*b)->index != id_x)
-				ft_rotate_b(b, bench);
-		else
-			while ((*b)->index != id_x)
-				ft_reverse_rotate_b(b, bench);
-		ft_push_a(a, b, bench);
+		while ((*b)->index != target_idx)
+			ft_rotate_b(b, bench);
+	}
+	else
+	{
+		while ((*b)->index != target_idx)
+			ft_reverse_rotate_b(b, bench);
+	}
+}
+
+static void	push_back_a(t_stack **a, t_stack **b, int size, t_benchmark *bench)
+{
+	int	chunk_len;
+	int	chunk_end;
+	int	chunk_start;
+	int	target_idx;
+
+	chunk_len = chunk_size(size);
+	chunk_end = size - 1;
+	while (chunk_end >= 0)
+	{
+		chunk_start = chunk_end - chunk_len + 1;
+		if (chunk_start < 0)
+			chunk_start = 0;
+		target_idx = chunk_end;
+		while (target_idx >= chunk_start)
+		{
+			rotate_to_target_b(b, target_idx, bench);
+			ft_push_a(a, b, bench);
+			target_idx--;
+		}
+		chunk_end = chunk_start - 1;
 	}
 }
 
@@ -105,7 +199,6 @@ void	med_algo(t_stack **a, t_benchmark *bench)
 {
 	t_stack	*b;
 	int		size;
-	int		range;
 
 	b = NULL;
 	size = ft_stack_size(a);
@@ -115,11 +208,7 @@ void	med_algo(t_stack **a, t_benchmark *bench)
 		return ;
 	}
 	set_rnk_index(a);
-	if (size <= 100)
-		range = 20;
-	else
-		range = 40;
-	push_chnk_b(a, &b, range, bench);
-	push_back_a(a, &b, bench);
+	push_chnk_b(a, &b, size, bench);
+	push_back_a(a, &b, size, bench);
 }
 

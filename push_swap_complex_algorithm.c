@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 17:34:23 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/20 19:01:56 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/13 22:26:45 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,10 +135,7 @@ void	ft_complex_algorithm(t_stack **a, t_benchmark *bench)
 
 	size = ft_stack_size(a);
 	if (size == 3)
-	{
 		ft_three_sorter(a, bench);
-		return ;
-	}
 	b = NULL;
 	arr = stack_to_arr(a);
 	bubble_sort(arr, size);

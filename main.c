@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: berkceli <berkceli@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:55:53 by berkceli          #+#    #+#             */
-/*   Updated: 2026/04/20 18:57:26 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/20 17:15:47 by berkceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,57 +47,39 @@ int	is_there_bench(char *argv[])
 int	main(int argc, char *argv[])
 {
 	t_stack		*a;
-	int			s;
 	int			i;
 	int			b;
+	int			selected_flag;
 	t_benchmark	bench;
 	float		disorder;
-	int			ss;
-	int			x;
+	t_strategy	strategy;
 
-	ss = 0;
 	b = is_there_bench(argv);
 	init_bench(&bench);
+	strategy = ADAPTIVE;
 	if (argc < 2)
 		return (0);
-	/* else if (ft_check_error(argc, argv) == 0)
-		return (0); */
 	a = ft_reader(argc, argv);
-	//stack_printer(&a, 'A');
 	disorder = ft_compute_disorder(&a);
 	i = 1;
-	s = -1;
 	while (i < argc)
 	{
-		x = flag_checker(argv[i]);
-		if (x != -1)
-			s = x;
+		selected_flag = flag_checker(argv[i]);
+		if (selected_flag >= SIMPLE && selected_flag <= ADAPTIVE)
+			strategy = selected_flag;
 		i++;
 	}
 	if (b == 1)
 		bench.bench = 1;
-	if (s == 0)
-	{
-		ss = 0;
+	if (strategy == SIMPLE)
 		ft_simple_algorithm(&a, &bench);
-	}
-	else if (s == 1)
-	{
-		ss = 1;
+	else if (strategy == MEDIUM)
 		med_algo(&a, &bench);
-	}
-	else if (s == 2)
-	{
-		ss = 2;
+	else if (strategy == COMPLEX)
 		ft_complex_algorithm(&a, &bench);
-	}
 	else
-	{
-		ss = 3;
 		ft_adaptive_algorithm(&a, &bench);
-	}
 	if (b == 1)
-		ft_benchmark(disorder, ss, &bench);
-	//stack_printer(&a, 'A');
+		ft_benchmark(disorder, strategy, &bench);
 	return (0);
 }
