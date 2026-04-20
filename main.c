@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:55:53 by berkceli          #+#    #+#             */
-/*   Updated: 2026/04/16 21:13:21 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/20 18:50:17 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	main(int argc, char *argv[])
 	int			s;
 	int			i;
 	int			b;
-	int			strategy_executed;
 	t_benchmark	bench;
 	float		disorder;
 	int			ss;
@@ -58,51 +57,44 @@ int	main(int argc, char *argv[])
 	ss = 0;
 	b = is_there_bench(argv);
 	init_bench(&bench);
-	strategy_executed = 0;
 	if (argc < 2)
 		return (0);
 	/* else if (ft_check_error(argc, argv) == 0)
 		return (0); */
 	a = ft_reader(argc, argv);
-	stack_printer(&a, 'A');
+	//stack_printer(&a, 'A');
 	disorder = ft_compute_disorder(&a);
 	i = 1;
 	s = -1;
 	while (i < argc)
 	{
 		s = flag_checker(argv[i]);
-		if (s != -1)
+		if (b == 1)
+			bench.bench = 1;
+		if (s == 0)
 		{
-			if (b == 1)
-				bench.bench = 1;
-			if (s == 0)
-			{
-				ss = 0;
-				ft_simple_algorithm(&a, &bench);
-			}
-			else if (s == 1)
-			{
-				ss = 1;
-				med_algo(&a, &bench);
-			}
-			else if (s == 2)
-			{
-				ss = 2;
-				ft_complex_algorithm(&a, &bench);
-			}
-			else if (s == 3)
-			{
-				ss = 3;
-				ft_adaptive_algorithm(&a, &bench);
-			}
+			ss = 0;
+			ft_simple_algorithm(&a, &bench);
+		}
+		else if (s == 1)
+		{
+			ss = 1;
+			med_algo(&a, &bench);
+		}
+		else if (s == 2)
+		{
+			ss = 2;
+			ft_complex_algorithm(&a, &bench);
+		}
+		else
+		{
+			ss = 3;
+			ft_adaptive_algorithm(&a, &bench);
 		}
 		i++;
 	}
 	if (b == 1)
 		ft_benchmark(disorder, ss, &bench);
-	strategy_executed = 1;
-	if (!strategy_executed)
-		ft_adaptive_algorithm(&a, &bench);
-	stack_printer(&a, 'A');
+	//stack_printer(&a, 'A');
 	return (0);
 }
