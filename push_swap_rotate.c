@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: berkceli <berkceli@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 23:22:44 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/08 19:46:46 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/20 17:15:42 by berkceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_rotate_b(t_stack **b, t_benchmark *bench)
 	second->prev_value = NULL;
 	*b = second;
 	if (bench->bench == 0)
-		write(1, "ra\n", 3);
+		write(1, "rb\n", 3);
 	bench->rb++;
 }
 void	ft_rotate_a_b(t_stack **a, t_stack **b, t_benchmark *bench)
