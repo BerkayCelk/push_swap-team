@@ -6,13 +6,13 @@
 /*   By: berkceli <berkceli@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 23:22:44 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/20 17:15:42 by berkceli         ###   ########.fr       */
+/*   Updated: 2026/04/23 01:40:41 by berkceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	print_bench_line_1(t_benchmark bench)
+static void	print_bench(t_benchmark bench)
 {
 	ft_putstr_fd("[bench] total_ops: ", 1);
 	ft_putnbr_fd(bench.total, 1);
@@ -69,6 +69,7 @@ void	ft_rotate_b(t_stack **b, t_benchmark *bench)
 	write(1, "rb\n", 3);
 	bench->rb++;
 }
+
 void	ft_rotate_a_b(t_stack **a, t_stack **b, t_benchmark *bench)
 {
 	t_stack	*last;
@@ -99,7 +100,7 @@ void	ft_rotate_a_b(t_stack **a, t_stack **b, t_benchmark *bench)
 
 void	bench_writer(t_benchmark bench)
 {
-	print_bench_line_1(bench);
+	print_bench(bench);
 	ft_putstr_fd("[bench] ra: ", 1);
 	ft_putnbr_fd(bench.ra, 1);
 	ft_putstr_fd(" rb: ", 1);

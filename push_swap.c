@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: berkceli <berkceli@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/23 11:00:00 by berkceli          #+#    #+#             */
+/*   Updated: 2026/04/23 11:00:00 by berkceli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_free(char **doublearray)
@@ -34,43 +46,45 @@ int	flag_checker(char *arg)
 	return (-1);
 }
 
-static int	is_optional_flag(char *arg)
+static int	fill_stack_from_arg(t_stack **a, char *arg)
 {
-	int	flag;
+	int		j;
+	long	value;
+	char	**split;
 
-	flag = flag_checker(arg);
-	return (flag >= SIMPLE && flag <= BENCH);
+	split = ft_split(arg, ' ');
+	if (!split)
+		return (0);
+	j = 0;
+	while (split[j])
+	{
+		value = ft_atol(split[j]);
+		if (*a == NULL)
+			*a = ft_new_stack((int)value);
+		else
+			ft_stackadd_back(a, ft_new_stack((int)value));
+		j++;
+	}
+	ft_free(split);
+	return (1);
 }
 
 t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc)
 {
 	int		i;
-	int		j;
-	long	value;
-	char	**split;
+	int		flag;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (is_optional_flag(argv[i]))
+		flag = flag_checker(argv[i]);
+		if (flag >= SIMPLE && flag <= BENCH)
 		{
 			i++;
 			continue ;
 		}
-		split = ft_split(argv[i], ' ');
-		if (!split)
+		if (!fill_stack_from_arg(&a, argv[i]))
 			return (a);
-		j = 0;
-		while (split[j])
-		{
-			value = ft_atol(split[j]);
-			if (a == NULL)
-				a = ft_new_stack((int)value);
-			else
-				ft_stackadd_back(&a, ft_new_stack((int)value));
-			j++;
-		}
-		ft_free(split);
 		i++;
 	}
 	return (a);

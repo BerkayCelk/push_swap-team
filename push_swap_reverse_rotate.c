@@ -51,6 +51,7 @@ void	ft_reverse_rotate_b(t_stack **b, t_benchmark *bench)
 	write(1, "rrb\n", 4);
 	bench->rrb++;
 }
+
 void	ft_reverse_rotate_a_b(t_stack **a, t_stack **b, t_benchmark *bench)
 {
 	t_stack	*first;

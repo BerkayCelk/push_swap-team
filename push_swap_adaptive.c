@@ -12,25 +12,25 @@
 
 #include "push_swap.h"
 
-t_strategy	ft_adaptive_algorithm(t_stack **a,t_benchmark *bench)
+t_strategy	ft_adaptive_algorithm(t_stack **a, t_benchmark *bench)
 {
 	float	disorder;
 
 	disorder = ft_compute_disorder(a);
-    if(disorder < 0.2)
-    {
-        ft_simple_algorithm(a,bench);
-        return(SIMPLE);
-    }
-    else if(0.2 <= disorder && disorder < 0.5)
-    {
-        med_algo(a,bench);
-        return(MEDIUM);
-    }
-    else if (0.5 <= disorder)
-    {
-        ft_complex_algorithm(a,bench);
-        return(COMPLEX);
-    }
-    return(ADAPTIVE);
+	if (disorder < 0.2)
+	{
+		ft_simple_algorithm(a, bench);
+		return (SIMPLE);
+	}
+	else if (0.2 <= disorder && disorder < 0.5)
+	{
+		med_algo(a, bench);
+		return (MEDIUM);
+	}
+	else if (0.5 <= disorder)
+	{
+		ft_complex_algorithm(a, bench);
+		return (COMPLEX);
+	}
+	return (ADAPTIVE);
 }

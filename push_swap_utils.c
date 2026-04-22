@@ -67,15 +67,17 @@ void	ft_stackadd_back(t_stack **stack, t_stack *node)
 	node->next_value = NULL;
 }
 
-int ft_stack_size(t_stack **stack)
+int	ft_stack_size(t_stack **stack)
 {
-    int i = 0;
-    t_stack *temp = *stack;
-    while(temp)
-    {
-        i++;
-        temp = temp->next_value;
-    }
-    return(i);
-}
+	int		i;
+	t_stack	*temp;
 
+	i = 0;
+	temp = *stack;
+	while (temp)
+	{
+		i++;
+		temp = temp->next_value;
+	}
+	return (i);
+}

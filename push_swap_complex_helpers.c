@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_push.c                                   :+:      :+:    :+:   */
+/*   push_swap_complex_helpers.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: berkceli <berkceli@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,36 +12,71 @@
 
 #include "push_swap.h"
 
-void	ft_push_a(t_stack **a, t_stack **b, t_benchmark *bench)
+int	bit_long(int value)
 {
-	t_stack	*temp;
+	int	size;
 
-	if (!b || !*b)
-		return ;
-	temp = *b;
-	*b = (*b)->next_value;
-	if (*b)
-		(*b)->prev_value = NULL;
-	temp->next_value = NULL;
-	temp->prev_value = NULL;
-	ft_stackadd_front(a, temp);
-	write(1, "pa\n", 3);
-	bench->pa++;
+	size = 0;
+	if (value == 0)
+		return (1);
+	while (value != 0)
+	{
+		value /= 2;
+		size++;
+	}
+	return (size);
 }
 
-void	ft_push_b(t_stack **a, t_stack **b, t_benchmark *bench)
+int	max_bit_long(t_stack **a)
 {
+	int	size;
+
+	size = ft_stack_size(a);
+	return (bit_long(size - 1));
+}
+
+void	bubble_sort(int *arr, int size)
+{
+	int	i;
+	int	j;
+	int	dummy;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = 0;
+		while (j < size - i - 1)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				dummy = arr[j + 1];
+				arr[j + 1] = arr[j];
+				arr[j] = dummy;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+int	*stack_to_arr(t_stack **a)
+{
+	int		size;
+	int		i;
+	int		*arr;
 	t_stack	*temp;
 
-	if (!a || !*a)
-		return ;
+	i = 0;
+	size = ft_stack_size(a);
+	arr = malloc(sizeof(int) * size);
+	if (!arr)
+		return (NULL);
 	temp = *a;
-	*a = (*a)->next_value;
-	if (*a)
-		(*a)->prev_value = NULL;
-	temp->next_value = NULL;
-	temp->prev_value = NULL;
-	ft_stackadd_front(b, temp);
-	write(1, "pb\n", 3);
-	bench->pb++;
+	while (temp)
+	{
+		arr[i] = temp->value;
+		temp = temp->next_value;
+		i++;
+	}
+	return (arr);
 }

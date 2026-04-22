@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: berkceli <berkceli@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/06 21:42:53 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/14 18:57:06 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/23 02:23:05 by berkceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,67 +79,53 @@ void				ft_complex_algorithm_helper(t_stack **a, t_stack **b,
 						int rotation, t_benchmark *bench);
 void				ft_complex_algorithm(t_stack **a, t_benchmark *bench);
 
-// push_swap_control_form
 void				ft_free_res(char **res);
-void				format_lmt_ctrl(int argc, char **argv);
 
-// push_swap_disorder_metric
 float				ft_compute_disorder(t_stack **a);
 
-// push_swap_error
 int					ft_check_error(int argc, char *argv[]);
 
-// push_swap_init
 t_stack				*stack_init(int argc, char **argv);
 
-// push_swap_medium_algorithm
 void				med_algo(t_stack **a, t_benchmark *bench);
+void				ft_rotate_to_chunk(t_stack **a, int min_idx, int max_idx,
+						t_benchmark *bench);
+void				ft_rotate_to_target_b(t_stack **b, int target_idx,
+						t_benchmark *bench);
 
-// push_swap_push
 void				ft_push_a(t_stack **a, t_stack **b, t_benchmark *bench);
 void				ft_push_b(t_stack **a, t_stack **b, t_benchmark *bench);
 
-// push_swap_reverse_rotate
 void				ft_reverse_rotate_a(t_stack **a, t_benchmark *bench);
 void				ft_reverse_rotate_b(t_stack **b, t_benchmark *bench);
 void				ft_reverse_rotate_a_b(t_stack **a, t_stack **b,
 						t_benchmark *bench);
 
-// push_swap_rotate
 void				ft_rotate_a(t_stack **a, t_benchmark *bench);
 void				ft_rotate_b(t_stack **b, t_benchmark *bench);
 void				ft_rotate_a_b(t_stack **a, t_stack **b, t_benchmark *bench);
 
-// push_swap_simple
 void				ft_three_sorter(t_stack **c, t_benchmark *bench);
 void				ft_two_sorter(t_stack **b, t_benchmark *bench);
 void				ft_helper_simple_algorithm(t_stack **a, int size,
 						t_benchmark *bench);
 void				ft_simple_algorithm(t_stack **a, t_benchmark *bench);
 
-// push_swap_stack_clear
 void				ft_stack_clear(t_stack *stack);
 
-// push_swap_swap
 void				ft_swap_a(t_stack **a, t_benchmark *bench);
 void				ft_swap_b(t_stack **b, t_benchmark *bench);
 void				ft_swap_a_b(t_stack **a, t_stack **b, t_benchmark *bench);
 
-// push_swap_utils
 t_stack				*ft_new_stack(int new_value);
 void				ft_stackadd_front(t_stack **stack, t_stack *node);
 t_stack				*ft_stacklast(t_stack *stack);
 void				ft_stackadd_back(t_stack **stack, t_stack *node);
 int					ft_stack_size(t_stack **stack);
 
-// push_swap
 void				ft_free(char **doublearray);
 int					flag_checker(char *arg);
 t_stack				*ft_stack_creator(t_stack *a, char *argv[], int argc);
 t_stack				*ft_reader(int argc, char *argv[]);
-
-// unnecessary_functions
-void				stack_printer(t_stack **a, char x);
-void				bench_writer(t_benchmark bench);
 
 #endif
