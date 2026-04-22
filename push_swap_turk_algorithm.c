@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 21:55:56 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/03/14 22:15:31 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/21 05:22:43 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ t_stack	*find_max_stack(t_stack **a)
 			max = temp->value;
 		temp = temp->next_value;
 	}
-	
 }
 
 int	ft_push_swap_finding_target_node(t_stack **a, t_stack **b, int value_a)

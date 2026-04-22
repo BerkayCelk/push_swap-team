@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:55:53 by berkceli          #+#    #+#             */
-/*   Updated: 2026/04/20 18:57:26 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/21 05:11:10 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@ int	main(int argc, char *argv[])
 	{
 		x = flag_checker(argv[i]);
 		if (x != -1)
+		{
 			s = x;
+		}
 		i++;
 	}
 	if (b == 1)
