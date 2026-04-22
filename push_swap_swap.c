@@ -6,7 +6,7 @@ void	ft_swap_a(t_stack **a,t_benchmark *bench)
 	t_stack	*second;
 	t_stack	*third;
 
-	if (!*a || !(*a)->value)
+	if (!*a || !(*a)->next_value)
 		return ;
 	first = *a;
 	second = (*a)->next_value;
@@ -18,8 +18,7 @@ void	ft_swap_a(t_stack **a,t_benchmark *bench)
 	if (third)
 		third->prev_value = first;
 	*a = second;
-	if(bench->bench == 0)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 	bench->sa++;
 }
 
@@ -29,7 +28,7 @@ void	ft_swap_b(t_stack **b,t_benchmark *bench)
 	t_stack	*second;
 	t_stack	*third;
 
-	if (!*b || !(*b)->value)
+	if (!*b || !(*b)->next_value)
 		return ;
 	first = *b;
 	second = (*b)->next_value;
@@ -39,11 +38,10 @@ void	ft_swap_b(t_stack **b,t_benchmark *bench)
 	first->next_value = third;
 	first->prev_value = second;
 	if (third)
-		third->next_value = first;
+		third->prev_value = first;
 	*b = second;
-	if(bench->bench == 0)
-		write(1, "sb\n", 3);
-	bench->pb++;
+	write(1, "sb\n", 3);
+	bench->sb++;
 }
 
 void	ft_swap_a_b(t_stack **a, t_stack **b,t_benchmark *bench)
@@ -61,7 +59,8 @@ void	ft_swap_a_b(t_stack **a, t_stack **b,t_benchmark *bench)
 	second->prev_value = NULL;
 	first->next_value = third;
 	first->prev_value = second;
-	third->next_value = first;
+	if (third)
+		third->prev_value = first;
 	*a = second;
 	first = *b;
 	second = (*b)->next_value;
@@ -70,9 +69,9 @@ void	ft_swap_a_b(t_stack **a, t_stack **b,t_benchmark *bench)
 	second->prev_value = NULL;
 	first->next_value = third;
 	first->prev_value = second;
-	third->next_value = first;
+	if (third)
+		third->prev_value = first;
 	*b = second;
-	if(bench->bench == 0)
-		write(1, "ss\n", 3);
+	write(1, "ss\n", 3);
 	bench->ss++;
 }

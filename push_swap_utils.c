@@ -14,24 +14,25 @@
 
 t_stack	*ft_new_stack(int new_value)
 {
-	t_stack	*new;
+	t_stack	*node;
 
-	new = malloc(sizeof(t_stack));
-	if (!new)
+	node = malloc(sizeof(t_stack));
+	if (!node)
 		return (NULL);
-	new->prev_value = NULL;
-	new->value = new_value;
-	new->next_value = NULL;
-	return (new);
+	node->prev_value = NULL;
+	node->value = new_value;
+	node->next_value = NULL;
+	return (node);
 }
-void	ft_stackadd_front(t_stack **stack, t_stack *new)
+
+void	ft_stackadd_front(t_stack **stack, t_stack *node)
 {
-	if (!new || !stack)
+	if (!node || !stack)
 		return ;
-	new->next_value = *stack;
+	node->next_value = *stack;
 	if (*stack)
-		(*stack)->prev_value = new;
-	*stack = new;
+		(*stack)->prev_value = node;
+	*stack = node;
 	(*stack)->prev_value = NULL;
 }
 
@@ -49,21 +50,21 @@ t_stack	*ft_stacklast(t_stack *stack)
 	return (temp);
 }
 
-void	ft_stackadd_back(t_stack **stack, t_stack *new)
+void	ft_stackadd_back(t_stack **stack, t_stack *node)
 {
 	t_stack	*temp;
 
-	if (!new || !stack)
+	if (!node || !stack)
 		return ;
 	else if (*stack == NULL)
 	{
-		*stack = new;
+		*stack = node;
 		return ;
 	}
 	temp = ft_stacklast(*stack);
-	temp->next_value = new;
-	new->prev_value = temp;
-	new->next_value = NULL;
+	temp->next_value = node;
+	node->prev_value = temp;
+	node->next_value = NULL;
 }
 
 int ft_stack_size(t_stack **stack)

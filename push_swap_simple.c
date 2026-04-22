@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+static void	print_stack_node(t_stack *node)
+{
+	ft_putstr_fd("Value: ", 1);
+	ft_putnbr_fd(node->value, 1);
+	ft_putstr_fd("\tIndex: ", 1);
+	ft_putnbr_fd(node->index, 1);
+	ft_putstr_fd("\tTarget_Index: ", 1);
+	ft_putnbr_fd(node->target_index, 1);
+	ft_putstr_fd("\tCost_A: ", 1);
+	ft_putnbr_fd(node->cost_a, 1);
+	ft_putstr_fd(" Cost_B: ", 1);
+	ft_putnbr_fd(node->cost_b, 1);
+	write(1, "\n", 1);
+}
+
 void	stack_printer(t_stack **a, char x)
 {
 	t_stack	*temp;
@@ -19,18 +34,15 @@ void	stack_printer(t_stack **a, char x)
 	if (!a || !*a)
 		return ;
 	temp = *a;
-	printf("Stack %c\n", x);
+	ft_putstr_fd("Stack ", 1);
+	write(1, &x, 1);
+	write(1, "\n", 1);
 	while (temp)
 	{
-		printf("Value: %d	Index: %d	Target_Index: %d	Cost_A:%d Cost_B: %d\n",
-				temp->value,
-				temp->index,
-				temp->target_index,
-				temp->cost_a,
-				temp->cost_b);
+		print_stack_node(temp);
 		temp = temp->next_value;
 	}
-	printf("--------------------\n");
+	ft_putstr_fd("--------------------\n", 1);
 }
 
 void	ft_three_sorter(t_stack **c,t_benchmark *bench)

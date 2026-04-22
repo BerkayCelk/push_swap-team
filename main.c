@@ -59,6 +59,8 @@ int	main(int argc, char *argv[])
 	strategy = ADAPTIVE;
 	if (argc < 2)
 		return (0);
+	if (!ft_check_error(argc, argv))
+		return (1);
 	a = ft_reader(argc, argv);
 	disorder = ft_compute_disorder(&a);
 	i = 1;
@@ -81,5 +83,6 @@ int	main(int argc, char *argv[])
 		ft_adaptive_algorithm(&a, &bench);
 	if (b == 1)
 		ft_benchmark(disorder, strategy, &bench);
+	ft_stack_clear(a);
 	return (0);
 }

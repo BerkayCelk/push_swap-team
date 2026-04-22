@@ -25,18 +25,21 @@ OBJS = $(SRCS:.c=.o)
 LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft
 
+all: $(NAME)
+
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 clean:
-	@rm -rf $(OBJS) $(LIBFT)
+	@rm -rf $(OBJS)
+	@$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
 	@rm -rf $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 

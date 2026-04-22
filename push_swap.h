@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "Libft/libft.h"
-# include <stdio.h>
 # include <stdlib.h>
 
 # define INT_MINIMUM -2147483648
@@ -67,7 +66,7 @@ t_strategy			ft_adaptive_algorithm(t_stack **a, t_benchmark *bench);
 
 // push_swap_bench
 char				*ft_strategy_writer(t_strategy strategy);
-void				ft_benchmark(int disorder, t_strategy strategy,
+void				ft_benchmark(float disorder, t_strategy strategy,
 						t_benchmark *bench);
 
 // push_swap_complex_algorithm
@@ -128,16 +127,15 @@ void				ft_swap_a_b(t_stack **a, t_stack **b, t_benchmark *bench);
 
 // push_swap_utils
 t_stack				*ft_new_stack(int new_value);
-void				ft_stackadd_front(t_stack **stack, t_stack *new);
+void				ft_stackadd_front(t_stack **stack, t_stack *node);
 t_stack				*ft_stacklast(t_stack *stack);
-void				ft_stackadd_back(t_stack **stack, t_stack *new);
+void				ft_stackadd_back(t_stack **stack, t_stack *node);
 int					ft_stack_size(t_stack **stack);
 
 // push_swap
 void				ft_free(char **doublearray);
 int					flag_checker(char *arg);
-t_stack				*ft_stack_creator(t_stack *a, char *argv[], int argc,
-						char **split);
+t_stack				*ft_stack_creator(t_stack *a, char *argv[], int argc);
 t_stack				*ft_reader(int argc, char *argv[]);
 
 // unnecessary_functions

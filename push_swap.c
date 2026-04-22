@@ -4,6 +4,8 @@ void	ft_free(char **doublearray)
 {
 	size_t	i;
 
+	if (!doublearray)
+		return ;
 	i = 0;
 	while (doublearray[i] != NULL)
 		i++;
@@ -40,11 +42,12 @@ static int	is_optional_flag(char *arg)
 	return (flag >= SIMPLE && flag <= BENCH);
 }
 
-t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
+t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	long	value;
+	char	**split;
 
 	i = 1;
 	while (i < argc)
@@ -55,6 +58,8 @@ t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 			continue ;
 		}
 		split = ft_split(argv[i], ' ');
+		if (!split)
+			return (a);
 		j = 0;
 		while (split[j])
 		{
@@ -73,10 +78,8 @@ t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 
 t_stack	*ft_reader(int argc, char *argv[])
 {
-	char	**split;
 	t_stack	*a;
 
 	a = NULL;
-	split = NULL;
-	return (ft_stack_creator(a, argv, argc, split));
+	return (ft_stack_creator(a, argv, argc));
 }

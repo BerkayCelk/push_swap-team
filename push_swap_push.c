@@ -13,8 +13,7 @@ void	ft_push_a(t_stack **a, t_stack **b, t_benchmark *bench)
 	temp->next_value = NULL;
 	temp->prev_value = NULL;
 	ft_stackadd_front(a, temp);
-	if (bench->bench == 0)
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 	bench->pa++;
 }
 
@@ -31,7 +30,6 @@ void	ft_push_b(t_stack **a, t_stack **b, t_benchmark *bench)
 	temp->next_value = NULL;
 	temp->prev_value = NULL;
 	ft_stackadd_front(b, temp);
-	if (bench->bench == 0)
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 	bench->pb++;
 }
