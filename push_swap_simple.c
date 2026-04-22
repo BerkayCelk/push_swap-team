@@ -12,37 +12,18 @@
 
 #include "push_swap.h"
 
-static void	print_stack_node(t_stack *node)
+static int	is_sorted(t_stack **a)
 {
-	ft_putstr_fd("Value: ", 1);
-	ft_putnbr_fd(node->value, 1);
-	ft_putstr_fd("\tIndex: ", 1);
-	ft_putnbr_fd(node->index, 1);
-	ft_putstr_fd("\tTarget_Index: ", 1);
-	ft_putnbr_fd(node->target_index, 1);
-	ft_putstr_fd("\tCost_A: ", 1);
-	ft_putnbr_fd(node->cost_a, 1);
-	ft_putstr_fd(" Cost_B: ", 1);
-	ft_putnbr_fd(node->cost_b, 1);
-	write(1, "\n", 1);
-}
+	t_stack	*current;
 
-void	stack_printer(t_stack **a, char x)
-{
-	t_stack	*temp;
-
-	if (!a || !*a)
-		return ;
-	temp = *a;
-	ft_putstr_fd("Stack ", 1);
-	write(1, &x, 1);
-	write(1, "\n", 1);
-	while (temp)
+	current = *a;
+	while (current && current->next_value)
 	{
-		print_stack_node(temp);
-		temp = temp->next_value;
+		if (current->value > current->next_value->value)
+			return (0);
+		current = current->next_value;
 	}
-	ft_putstr_fd("--------------------\n", 1);
+	return (1);
 }
 
 void	ft_three_sorter(t_stack **c,t_benchmark *bench)
@@ -85,8 +66,8 @@ void	ft_two_sorter(t_stack **b,t_benchmark *bench)
 		return ;
 	first = *b;
 	second = first->next_value;
-	if (second->value > first->value)
-		ft_rotate_a(b,bench);
+	if (first->value > second->value)
+		ft_swap_a(b,bench);
 }
 
 void	ft_helper_simple_algorithm(t_stack **a, int size,t_benchmark *bench)
@@ -122,6 +103,13 @@ void	ft_simple_algorithm(t_stack **a,t_benchmark *bench)
 	int	size;
 
 	size = ft_stack_size(a);
+	if (size < 2 || is_sorted(a))
+		return ;
+	if (size == 2)
+	{
+		ft_two_sorter(a,bench);
+		return ;
+	}
 	if (size == 3)
 	{
 		ft_three_sorter(a,bench);

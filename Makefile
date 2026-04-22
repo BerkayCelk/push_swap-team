@@ -18,6 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -Wunused
 SRCS =  ft_atol.c push_swap_complex_algorithm.c push_swap_reverse_rotate.c push_swap_control_form.c push_swap_rotate.c \
 main.c push_swap_disorder_metric.c push_swap_simple.c push_swap.c push_swap_error.c \
 push_swap_stack_clear.c push_swap_init.c push_swap_swap.c push_swap_adaptive.c push_swap_medium_algorithm.c \
+push_swap_debug.c \
 push_swap_bench.c push_swap_push.c push_swap_utils.c 
 
 OBJS = $(SRCS:.c=.o)

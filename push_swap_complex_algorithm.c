@@ -135,7 +135,10 @@ void	ft_complex_algorithm(t_stack **a, t_benchmark *bench)
 
 	size = ft_stack_size(a);
 	if (size == 3)
+	{
 		ft_three_sorter(a, bench);
+		return ;
+	}
 	b = NULL;
 	arr = stack_to_arr(a);
 	bubble_sort(arr, size);
