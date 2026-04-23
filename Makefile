@@ -21,7 +21,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 SRCS =  ft_atol.c push_swap_complex_algorithm.c push_swap_complex_helpers.c push_swap_reverse_rotate.c push_swap_free_res.c push_swap_rotate.c \
 main.c push_swap_disorder_metric.c push_swap_simple.c push_swap.c push_swap_error.c \
 push_swap_stack_clear.c push_swap_init.c push_swap_swap.c push_swap_adaptive.c push_swap_medium_algorithm.c \
-push_swap_medium_helpers.c \
+push_swap_medium_helpers.c sort_three_five.c \
 push_swap_bench.c push_swap_bench_helpers.c push_swap_push.c push_swap_utils.c 
 
 OBJS = $(SRCS:.c=.o)

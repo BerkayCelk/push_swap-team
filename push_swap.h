@@ -107,6 +107,7 @@ void				ft_rotate_a_b(t_stack **a, t_stack **b, t_benchmark *bench);
 
 void				ft_three_sorter(t_stack **c, t_benchmark *bench);
 void				ft_two_sorter(t_stack **b, t_benchmark *bench);
+void				ft_small_sort(t_stack **a, t_benchmark *bench);
 void				ft_helper_simple_algorithm(t_stack **a, int size,
 						t_benchmark *bench);
 void				ft_simple_algorithm(t_stack **a, t_benchmark *bench);

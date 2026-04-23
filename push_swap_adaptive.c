@@ -15,7 +15,14 @@
 t_strategy	ft_adaptive_algorithm(t_stack **a, t_benchmark *bench)
 {
 	float	disorder;
+	int		size;
 
+	size = ft_stack_size(a);
+	if (size <= 5)
+	{
+		ft_small_sort(a, bench);
+		return (SIMPLE);
+	}
 	disorder = ft_compute_disorder(a);
 	if (disorder < 0.2)
 	{

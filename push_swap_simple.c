@@ -105,14 +105,9 @@ void	ft_simple_algorithm(t_stack **a, t_benchmark *bench)
 	size = ft_stack_size(a);
 	if (size < 2 || is_sorted(a))
 		return ;
-	if (size == 2)
+	if (size <= 5)
 	{
-		ft_two_sorter(a, bench);
-		return ;
-	}
-	if (size == 3)
-	{
-		ft_three_sorter(a, bench);
+		ft_small_sort(a, bench);
 		return ;
 	}
 	ft_helper_simple_algorithm(a, size, bench);
