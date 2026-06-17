@@ -71,4 +71,12 @@ Run the program by passing a list of integers as arguments. You can also specify
 
 ## Resources
 
+- https://www.geeksforgeeks.org/dsa/doubly-linked-list/
 
+- https://www.youtube.com/watch?v=OaG81sDEpVk&t=2945s&pp=ygUKcHVzaCBzd2FwIA%3D%3D
+
+- https://visualgo.net/en/sorting
+
+- https://visualgo.net/en/bitmask
+
+- https://visualgo.net/en/list

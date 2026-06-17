@@ -6,7 +6,7 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 17:34:23 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/21 05:31:48 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/23 05:16:04 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,75 +29,6 @@ void	ft_stack_arr_indexing(t_stack **a, int *arr, int size)
 		}
 		temp = temp->next_value;
 	}
-}
-
-int	bit_long(int value)
-{
-	int	size;
-
-	size = 0;
-	if (value == 0)
-		return (1);
-	while (value != 0)
-	{
-		value /= 2;
-		size++;
-	}
-	return (size);
-}
-
-int	max_bit_long(t_stack **a)
-{
-	int	size;
-
-	size = ft_stack_size(a);
-	return (bit_long(size - 1));
-}
-
-void	bubble_sort(int *arr, int size)
-{
-	int	i;
-	int	j;
-	int	dummy;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		j = 0;
-		while (j < size - i - 1)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				dummy = arr[j + 1];
-				arr[j + 1] = arr[j];
-				arr[j] = dummy;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-int	*stack_to_arr(t_stack **a)
-{
-	int		size;
-	int		i;
-	int		*arr;
-	t_stack	*temp;
-
-	i = 0;
-	size = ft_stack_size(a);
-	arr = malloc(sizeof(int) * size);
-	if (!arr)
-		return (NULL);
-	temp = *a;
-	while (temp)
-	{
-		arr[i] = temp->value;
-		temp = temp->next_value;
-		i++;
-	}
-	return (arr);
 }
 
 void	ft_complex_algorithm_helper(t_stack **a, t_stack **b, int rotation,
@@ -137,6 +68,11 @@ void	ft_complex_algorithm(t_stack **a, t_benchmark *bench)
 	if (size == 3)
 	{
 		ft_three_sorter(a, bench);
+		return ;
+	}
+	if (size == 5)
+	{
+		ft_small_sort(a, bench);
 		return ;
 	}
 	b = NULL;

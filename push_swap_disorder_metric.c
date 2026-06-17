@@ -36,5 +36,7 @@ float	ft_compute_disorder(t_stack **a)
 		}
 		current = current->next_value;
 	}
+	if (total_pairs == 0)
+		return (0.0f);
 	return (mistakes / total_pairs);
 }

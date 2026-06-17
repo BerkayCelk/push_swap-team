@@ -6,31 +6,24 @@
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 09:18:08 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/21 05:30:44 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/14 18:19:50 by ttezcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_printer(t_stack **a, char x)
+static int	is_sorted(t_stack **a)
 {
-	t_stack	*temp;
+	t_stack	*current;
 
-	if (!a || !*a)
-		return ;
-	temp = *a;
-	printf("Stack %c\n", x);
-	while (temp)
+	current = *a;
+	while (current && current->next_value)
 	{
-		printf("Value: %d	Index: %d	Target_Index: %d	Cost_A:%d Cost_B: %d\n",
-				temp->value,
-				temp->index,
-				temp->target_index,
-				temp->cost_a,
-				temp->cost_b);
-		temp = temp->next_value;
+		if (current->value > current->next_value->value)
+			return (0);
+		current = current->next_value;
 	}
-	printf("--------------------\n");
+	return (1);
 }
 
 void	ft_three_sorter(t_stack **c, t_benchmark *bench)
@@ -73,8 +66,8 @@ void	ft_two_sorter(t_stack **b, t_benchmark *bench)
 		return ;
 	first = *b;
 	second = first->next_value;
-	if (second->value > first->value)
-		ft_rotate_a(b, bench);
+	if (first->value > second->value)
+		ft_swap_a(b, bench);
 }
 
 void	ft_helper_simple_algorithm(t_stack **a, int size, t_benchmark *bench)
@@ -110,9 +103,11 @@ void	ft_simple_algorithm(t_stack **a, t_benchmark *bench)
 	int	size;
 
 	size = ft_stack_size(a);
-	if (size == 3)
+	if (size < 2 || is_sorted(a))
+		return ;
+	if (size <= 5)
 	{
-		ft_three_sorter(a, bench);
+		ft_small_sort(a, bench);
 		return ;
 	}
 	ft_helper_simple_algorithm(a, size, bench);

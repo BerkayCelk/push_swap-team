@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: berkceli <berkceli@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 23:22:44 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/16 21:16:51 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/23 01:40:41 by berkceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	print_bench(t_benchmark bench)
+{
+	ft_putstr_fd("[bench] total_ops: ", 1);
+	ft_putnbr_fd(bench.total, 1);
+	write(1, "\n", 1);
+	ft_putstr_fd("[bench] sa: ", 1);
+	ft_putnbr_fd(bench.sa, 1);
+	ft_putstr_fd(" sb: ", 1);
+	ft_putnbr_fd(bench.sb, 1);
+	ft_putstr_fd(" ss: ", 1);
+	ft_putnbr_fd(bench.ss, 1);
+	ft_putstr_fd(" pa: ", 1);
+	ft_putnbr_fd(bench.pa, 1);
+	ft_putstr_fd(" pb: ", 1);
+	ft_putnbr_fd(bench.pb, 1);
+	write(1, "\n", 1);
+}
 
 void	ft_rotate_a(t_stack **a, t_benchmark *bench)
 {
@@ -28,8 +46,7 @@ void	ft_rotate_a(t_stack **a, t_benchmark *bench)
 	first->next_value = NULL;
 	second->prev_value = NULL;
 	*a = second;
-	if (bench->bench == 0)
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 	bench->ra++;
 }
 
@@ -49,10 +66,10 @@ void	ft_rotate_b(t_stack **b, t_benchmark *bench)
 	first->next_value = NULL;
 	second->prev_value = NULL;
 	*b = second;
-	if (bench->bench == 0)
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 	bench->rb++;
 }
+
 void	ft_rotate_a_b(t_stack **a, t_stack **b, t_benchmark *bench)
 {
 	t_stack	*last;
@@ -77,16 +94,24 @@ void	ft_rotate_a_b(t_stack **a, t_stack **b, t_benchmark *bench)
 	first->next_value = NULL;
 	second->prev_value = NULL;
 	*b = second;
-	if (bench->bench == 0)
-		write(1, "rr\n", 3);
+	write(1, "rr\n", 3);
 	bench->rr++;
 }
 
 void	bench_writer(t_benchmark bench)
 {
-	printf("[bench] total_ops: %d\n", bench.total);
-	printf("[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", bench.sa, bench.sb,
-			bench.ss, bench.pa, bench.pb);
-	printf("[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n", bench.ra,
-			bench.rb, bench.rr, bench.rra, bench.rrb, bench.rrr);
+	print_bench(bench);
+	ft_putstr_fd("[bench] ra: ", 1);
+	ft_putnbr_fd(bench.ra, 1);
+	ft_putstr_fd(" rb: ", 1);
+	ft_putnbr_fd(bench.rb, 1);
+	ft_putstr_fd(" rr: ", 1);
+	ft_putnbr_fd(bench.rr, 1);
+	ft_putstr_fd(" rra: ", 1);
+	ft_putnbr_fd(bench.rra, 1);
+	ft_putstr_fd(" rrb: ", 1);
+	ft_putnbr_fd(bench.rrb, 1);
+	ft_putstr_fd(" rrr: ", 1);
+	ft_putnbr_fd(bench.rrr, 1);
+	write(1, "\n", 1);
 }

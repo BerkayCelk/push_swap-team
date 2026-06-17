@@ -1,46 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mahmut.c                                           :+:      :+:    :+:   */
+/*   push_swap_free_res.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/27 23:35:50 by ttezcan           #+#    #+#             */
-/*   Updated: 2026/04/02 20:48:39 by ttezcan          ###   ########.fr       */
+/*   Created: 2026/03/01 11:51:51 by berkceli          #+#    #+#             */
+/*   Updated: 2026/04/23 02:23:05 by berkceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(void)
+void	ft_free_res(char **res)
 {
-	write(2, "Error\n", 6);
-}
-
-int	ft_double_number(t_stack **a)
-{
-	int	*arr;
 	int	i;
-	int	size;
-	int	j;
 
-	arr = malloc(ft_stack_size(a) * sizeof(int));
-	if (!arr)
-		return (0);
-	arr = stack_to_arr(a);
+	if (!res)
+		return ;
 	i = 0;
-	size = ft_stack_size(a);
-	while (i < size)
+	while (res[i])
 	{
-		j = 0;
-		while (j < size)
-		{
-			if (arr[i] == arr[j])
-				return (0);
-			j++;
-		}
+		free(res[i]);
 		i++;
 	}
-	free(arr);
-	return (1);
+	free(res);
 }

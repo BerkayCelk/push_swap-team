@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttezcan <ttezcan@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: berkceli <berkceli@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:55:53 by berkceli          #+#    #+#             */
-/*   Updated: 2026/04/21 05:11:10 by ttezcan          ###   ########.fr       */
+/*   Updated: 2026/04/20 17:15:47 by berkceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,62 +44,57 @@ int	is_there_bench(char *argv[])
 	return (0);
 }
 
+static t_strategy	get_strategy(int argc, char *argv[])
+{
+	int			i;
+	int			selected_flag;
+	t_strategy	strategy;
+
+	strategy = ADAPTIVE;
+	i = 1;
+	while (i < argc)
+	{
+		selected_flag = flag_checker(argv[i]);
+		if (selected_flag >= SIMPLE && selected_flag <= ADAPTIVE)
+			strategy = selected_flag;
+		i++;
+	}
+	return (strategy);
+}
+
+static void	run_strategy(t_stack **a, t_benchmark *bench, t_strategy strategy)
+{
+	if (strategy == SIMPLE)
+		ft_simple_algorithm(a, bench);
+	else if (strategy == MEDIUM)
+		med_algo(a, bench);
+	else if (strategy == COMPLEX)
+		ft_complex_algorithm(a, bench);
+	else
+		ft_adaptive_algorithm(a, bench);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack		*a;
-	int			s;
-	int			i;
-	int			b;
 	t_benchmark	bench;
 	float		disorder;
-	int			ss;
-	int			x;
+	int			b;
+	t_strategy	strategy;
 
-	ss = 0;
 	b = is_there_bench(argv);
 	init_bench(&bench);
 	if (argc < 2)
 		return (0);
-	/* else if (ft_check_error(argc, argv) == 0)
-		return (0); */
+	if (!ft_check_error(argc, argv))
+		return (1);
 	a = ft_reader(argc, argv);
-	//stack_printer(&a, 'A');
 	disorder = ft_compute_disorder(&a);
-	i = 1;
-	s = -1;
-	while (i < argc)
-	{
-		x = flag_checker(argv[i]);
-		if (x != -1)
-		{
-			s = x;
-		}
-		i++;
-	}
+	strategy = get_strategy(argc, argv);
+	bench.bench = b;
+	run_strategy(&a, &bench, strategy);
 	if (b == 1)
-		bench.bench = 1;
-	if (s == 0)
-	{
-		ss = 0;
-		ft_simple_algorithm(&a, &bench);
-	}
-	else if (s == 1)
-	{
-		ss = 1;
-		med_algo(&a, &bench);
-	}
-	else if (s == 2)
-	{
-		ss = 2;
-		ft_complex_algorithm(&a, &bench);
-	}
-	else
-	{
-		ss = 3;
-		ft_adaptive_algorithm(&a, &bench);
-	}
-	if (b == 1)
-		ft_benchmark(disorder, ss, &bench);
-	//stack_printer(&a, 'A');
+		ft_benchmark(disorder, strategy, &bench);
+	ft_stack_clear(a);
 	return (0);
 }

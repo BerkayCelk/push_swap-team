@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: berkceli <berkceli@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/23 11:00:00 by berkceli          #+#    #+#             */
+/*   Updated: 2026/04/23 11:00:00 by berkceli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_free(char **doublearray)
 {
 	size_t	i;
 
+	if (!doublearray)
+		return ;
 	i = 0;
 	while (doublearray[i] != NULL)
 		i++;
@@ -14,6 +28,7 @@ void	ft_free(char **doublearray)
 	}
 	free(doublearray);
 }
+
 int	flag_checker(char *arg)
 {
 	if (!arg)
@@ -31,28 +46,45 @@ int	flag_checker(char *arg)
 	return (-1);
 }
 
-t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
+static int	fill_stack_from_arg(t_stack **a, char *arg)
 {
-	int	i;
-	int	j;
+	int		j;
+	long	value;
+	char	**split;
+
+	split = ft_split(arg, ' ');
+	if (!split)
+		return (0);
+	j = 0;
+	while (split[j])
+	{
+		value = ft_atol(split[j]);
+		if (*a == NULL)
+			*a = ft_new_stack((int)value);
+		else
+			ft_stackadd_back(a, ft_new_stack((int)value));
+		j++;
+	}
+	ft_free(split);
+	return (1);
+}
+
+t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc)
+{
+	int		i;
+	int		flag;
 
 	i = 1;
-	while (argv[i][0] == '-')
-		i++;
 	while (i < argc)
 	{
-		split = ft_split(argv[i], ' ');
-		j = 0;
-		while (split[j])
+		flag = flag_checker(argv[i]);
+		if (flag >= SIMPLE && flag <= BENCH)
 		{
-			if (a == NULL)
-				a = ft_new_stack(ft_atol(split[j]));
-			else
-				ft_stackadd_back(&a, ft_new_stack(ft_atoi(split[j])));
-			j++;
+			i++;
+			continue ;
 		}
-		j = 0;
-		ft_free(split);
+		if (!fill_stack_from_arg(&a, argv[i]))
+			return (a);
 		i++;
 	}
 	return (a);
@@ -60,10 +92,8 @@ t_stack	*ft_stack_creator(t_stack *a, char *argv[], int argc, char **split)
 
 t_stack	*ft_reader(int argc, char *argv[])
 {
-	char	**split;
 	t_stack	*a;
 
 	a = NULL;
-	split = NULL;
-	return (ft_stack_creator(a, argv, argc, split));
+	return (ft_stack_creator(a, argv, argc));
 }
