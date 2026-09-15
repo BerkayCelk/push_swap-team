@@ -1,6 +1,8 @@
-> **Note / Not:** This repository is a fork of [Tekin-TEZCAN/push_swap](https://github.com/Tekin-TEZCAN/push_swap) and was used as the **joint 42 push_swap project** of Berkay Çelik and Tekin Tezcan. The final working version was developed together in branch `berkay4`.
+> **Note / Not:** This repository is a fork of [Tekin-TEZCAN/push_swap](https://github.com/Tekin-TEZCAN/push_swap), used as the **joint 42 push_swap project** of Berkay Çelik and Tekin Tezcan. The final working version was developed together (branch `berkay4`).
 >
-> My own implementation work (parsing/validation, stack operations, error handling, algorithm draft) is archived in [BerkayCelk/push_swap](https://github.com/BerkayCelk/push_swap).
+> **Work split (per *Team Contributions* below):** Berkay Çelik — medium O(n·√n) chunk sort, simple O(n²) and complex O(n log n) radix sort algorithms, Makefile configuration · Tekin Tezcan — core stack data structures, disorder metric, rules and allowed moves.
+>
+> My own working branch (parsing/validation, stack operations, error handling, first version of the medium algorithm) is archived in [BerkayCelk/push_swap](https://github.com/BerkayCelk/push_swap).
 
 *This project has been created as part of the 42 curriculum by ttezcan, berkceli*
 
